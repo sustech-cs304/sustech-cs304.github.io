@@ -70,21 +70,6 @@ const sidebars = {
     'merged-prs/24S',
     'merged-prs/23F',
   ],
-
-
-
-  // But you can create a sidebar manually
-  /*
-  tutorialSidebar: [
-    'intro',
-    'hello',
-    {
-      type: 'category',
-      label: 'Tutorial',
-      items: ['tutorial-basics/create-a-document'],
-    },
-  ],
-   */
 };
 
 export default sidebars;
