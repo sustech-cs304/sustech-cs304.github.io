@@ -1,0 +1,24 @@
+{
+  "languages": [
+    "JavaScript",
+    "CSS",
+    "HTML",
+    "Java",
+    "TypeScript",
+    "Python",
+    "C++",
+    "C/C++ Header",
+    "C"
+  ],
+  "counts": [
+    2043245,
+    429280,
+    266679,
+    140466,
+    20346,
+    6488,
+    3354,
+    2496,
+    58
+  ]
+}
