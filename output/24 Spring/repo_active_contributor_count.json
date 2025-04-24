@@ -1,194 +1,146 @@
 [
   {
-    "repo_name": "team-project-24spring-19",
+    "group_name": "19",
     "active_contributor_count": 2
   },
   {
-    "repo_name": "team-project-24spring-24",
-    "active_contributor_count": 3
-  },
-  {
-    "repo_name": "team-21",
-    "active_contributor_count": 6
-  },
-  {
-    "repo_name": "team-project-24spring-26",
-    "active_contributor_count": 10
-  },
-  {
-    "repo_name": "team-project-24spring-18",
-    "active_contributor_count": 7
-  },
-  {
-    "repo_name": "team-project-24spring-14",
-    "active_contributor_count": 7
-  },
-  {
-    "repo_name": "galaguide",
-    "active_contributor_count": 8
-  },
-  {
-    "repo_name": "team-project-24spring-0",
-    "active_contributor_count": 10
-  },
-  {
-    "repo_name": "team-project-24spring-22",
-    "active_contributor_count": 13
-  },
-  {
-    "repo_name": "team-project-24spring-20",
-    "active_contributor_count": 11
-  },
-  {
-    "repo_name": "team-project-24spring-13",
-    "active_contributor_count": 10
-  },
-  {
-    "repo_name": "SUSTech-study-website",
-    "active_contributor_count": 8
-  },
-  {
-    "repo_name": "team-project-24spring-33-1",
-    "active_contributor_count": 11
-  },
-  {
-    "repo_name": "team-project-24spring-38",
-    "active_contributor_count": 3
-  },
-  {
-    "repo_name": "team-project-24spring-31",
-    "active_contributor_count": 9
-  },
-  {
-    "repo_name": "team-project-24spring-2",
-    "active_contributor_count": 7
-  },
-  {
-    "repo_name": "team-project-24spring-23",
-    "active_contributor_count": 9
-  },
-  {
-    "repo_name": "Back-End",
+    "group_name": "26",
     "active_contributor_count": 5
   },
   {
-    "repo_name": "team-project-24spring-35",
-    "active_contributor_count": 7
+    "group_name": "18",
+    "active_contributor_count": 5
   },
   {
-    "repo_name": "team-project-24spring-teacher",
-    "active_contributor_count": 0
-  },
-  {
-    "repo_name": "team-project-24spring-39",
-    "active_contributor_count": 6
-  },
-  {
-    "repo_name": "team-project-24spring-29",
-    "active_contributor_count": 10
-  },
-  {
-    "repo_name": "team-project-24spring-team0",
-    "active_contributor_count": 0
-  },
-  {
-    "repo_name": "team-project-24spring-11",
-    "active_contributor_count": 10
-  },
-  {
-    "repo_name": "team-project-24spring-teacher-2024",
+    "group_name": "24",
     "active_contributor_count": 2
   },
   {
-    "repo_name": "team-project-24spring-40",
+    "group_name": "35",
+    "active_contributor_count": 4
+  },
+  {
+    "group_name": "38",
     "active_contributor_count": 2
   },
   {
-    "repo_name": "team-project-24spring-17",
-    "active_contributor_count": 12
+    "group_name": "14",
+    "active_contributor_count": 4
   },
   {
-    "repo_name": "team-project-24spring-8",
-    "active_contributor_count": 11
+    "group_name": "39",
+    "active_contributor_count": 4
   },
   {
-    "repo_name": "team-project-24spring-team19",
-    "active_contributor_count": 6
-  },
-  {
-    "repo_name": "team-project-24spring-team_02",
-    "active_contributor_count": 0
-  },
-  {
-    "repo_name": "team-project-24spring-team39",
+    "group_name": "40",
     "active_contributor_count": 1
   },
   {
-    "repo_name": "team-project-24spring-team_99",
-    "active_contributor_count": 0
+    "group_name": "31",
+    "active_contributor_count": 5
   },
   {
-    "repo_name": "team-project-24spring-27",
-    "active_contributor_count": 7
-  },
-  {
-    "repo_name": "team-project-24spring-__init__-slina-vollate",
-    "active_contributor_count": 0
-  },
-  {
-    "repo_name": "team-project-24spring-34",
-    "active_contributor_count": 7
-  },
-  {
-    "repo_name": "AcademicAssistant",
-    "active_contributor_count": 9
-  },
-  {
-    "repo_name": "team-project-24spring-7777777",
-    "active_contributor_count": 11
-  },
-  {
-    "repo_name": "team-project-24spring-team1",
-    "active_contributor_count": 10
-  },
-  {
-    "repo_name": "team-project-24spring-9",
-    "active_contributor_count": 6
-  },
-  {
-    "repo_name": "team-project-24spring-team_30",
+    "group_name": "23",
     "active_contributor_count": 4
   },
   {
-    "repo_name": "team-project-24spring-team16",
-    "active_contributor_count": 10
+    "group_name": "17",
+    "active_contributor_count": 5
   },
   {
-    "repo_name": "team-project-24spring-team25",
-    "active_contributor_count": 7
+    "group_name": "2",
+    "active_contributor_count": 5
   },
   {
-    "repo_name": "team-project-24spring-4",
+    "group_name": "32",
     "active_contributor_count": 4
   },
   {
-    "repo_name": "team-project-24spring-team15",
+    "group_name": "29",
+    "active_contributor_count": 5
+  },
+  {
+    "group_name": "5",
+    "active_contributor_count": 3
+  },
+  {
+    "group_name": "20",
+    "active_contributor_count": 5
+  },
+  {
+    "group_name": "27",
+    "active_contributor_count": 4
+  },
+  {
+    "group_name": "team19",
+    "active_contributor_count": 5
+  },
+  {
+    "group_name": "team39",
+    "active_contributor_count": 1
+  },
+  {
+    "group_name": "4",
+    "active_contributor_count": 4
+  },
+  {
+    "group_name": "22",
+    "active_contributor_count": 5
+  },
+  {
+    "group_name": "8",
+    "active_contributor_count": 5
+  },
+  {
+    "group_name": "9",
+    "active_contributor_count": 4
+  },
+  {
+    "group_name": "34",
+    "active_contributor_count": 5
+  },
+  {
+    "group_name": "team36",
+    "active_contributor_count": 5
+  },
+  {
+    "group_name": "28",
+    "active_contributor_count": 5
+  },
+  {
+    "group_name": "team_30",
+    "active_contributor_count": 3
+  },
+  {
+    "group_name": "team15",
+    "active_contributor_count": 5
+  },
+  {
+    "group_name": "team1",
+    "active_contributor_count": 5
+  },
+  {
+    "group_name": "0",
+    "active_contributor_count": 4
+  },
+  {
+    "group_name": "team16",
+    "active_contributor_count": 4
+  },
+  {
+    "group_name": "11",
+    "active_contributor_count": 4
+  },
+  {
+    "group_name": "13",
+    "active_contributor_count": 5
+  },
+  {
+    "group_name": "team25",
+    "active_contributor_count": 5
+  },
+  {
+    "group_name": "7777777",
     "active_contributor_count": 6
-  },
-  {
-    "repo_name": "team-project-24spring-32",
-    "active_contributor_count": 7
-  },
-  {
-    "repo_name": "team-project-24spring-5",
-    "active_contributor_count": 7
-  },
-  {
-    "repo_name": "team-project-24spring-team36",
-    "active_contributor_count": 9
-  },
-  {
-    "repo_name": "team-project-24spring-28",
-    "active_contributor_count": 7
   }
 ]

@@ -1,0 +1,77 @@
+{
+  "lang_counter": {
+    "chinese": 578,
+    "english": 3137,
+    "mixed": 70
+  },
+  "length_distribution": [
+    {
+      "length_range": "0–4",
+      "count": 2260
+    },
+    {
+      "length_range": "5–9",
+      "count": 1000
+    },
+    {
+      "length_range": "10–14",
+      "count": 410
+    },
+    {
+      "length_range": "15–19",
+      "count": 53
+    },
+    {
+      "length_range": "20–24",
+      "count": 24
+    },
+    {
+      "length_range": "25–29",
+      "count": 9
+    },
+    {
+      "length_range": "30–34",
+      "count": 15
+    },
+    {
+      "length_range": "35–39",
+      "count": 1
+    },
+    {
+      "length_range": "40–44",
+      "count": 2
+    },
+    {
+      "length_range": "45–49",
+      "count": 1
+    },
+    {
+      "length_range": "50–54",
+      "count": 3
+    },
+    {
+      "length_range": "55–59",
+      "count": 1
+    },
+    {
+      "length_range": "60–64",
+      "count": 1
+    },
+    {
+      "length_range": "65–69",
+      "count": 0
+    },
+    {
+      "length_range": "70–74",
+      "count": 2
+    },
+    {
+      "length_range": "75–79",
+      "count": 1
+    },
+    {
+      "length_range": "80–84",
+      "count": 2
+    }
+  ]
+}
