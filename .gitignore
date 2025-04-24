@@ -22,3 +22,5 @@ yarn-error.log*
 classroom-repos/output/*
 classroom-repos/repos/*
 classroom-repos/tmp/*
+
+.env

@@ -15,9 +15,9 @@ export default function CodeLineCountChart({ selectedSemester }) {
     fetch(DATA_URL)
       .then(res => res.json())
       .then(json => {
-        const { repo_names, total_lines, average_lines } = json;
+        const { group_names, total_lines, average_lines } = json;
 
-        const formattedData = repo_names.map((repo, idx) => ({
+        const formattedData = group_names.map((repo, idx) => ({
           repo,
           lines: total_lines[idx] || 0,
         })).sort((a, b) => b.lines - a.lines); // 降序
@@ -40,6 +40,7 @@ export default function CodeLineCountChart({ selectedSemester }) {
           <XAxis dataKey="repo" angle={-45} textAnchor="end" height={100} interval={0} />
           <YAxis />
           <Tooltip />
+          <Bar dataKey="lines" fill="#8884d8" label={{ position: 'top' }} />
           <ReferenceLine
             y={avgLines}
             stroke="red"
@@ -52,7 +53,6 @@ export default function CodeLineCountChart({ selectedSemester }) {
               fontWeight: 'bold'
             }}
           />
-          <Bar dataKey="lines" fill="#8884d8" label={{ position: 'top' }} />
         </BarChart>
       </ResponsiveContainer>
     </div>

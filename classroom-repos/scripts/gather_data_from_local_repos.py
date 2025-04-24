@@ -6,90 +6,70 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 import git
 
+from tools import check_valid, extract_semestar_name_from_path, check_repo_name_valid, remove_duplicate_commitors
+
 MULTI_THREAD = True
 WORKERS = 16  # Useful when MULTI_THREAD is True
 
-def count_code_lines(repo_path, valid_extensions=None):
-    if valid_extensions is None:
-        valid_extensions = ['.py', '.java', '.js', '.jsx', '.ts', '.tsx', '.c', '.cpp', '.h', '.html', '.css']
-
-    extension_to_language = {
-        '.py': 'Python',
-        '.java': 'Java',
-        '.js': 'JavaScript',
-        '.jsx': 'JavaScript',
-        '.ts': 'TypeScript',
-        '.tsx': 'TypeScript',
-        '.c': 'C',
-        '.cpp': 'C++',
-        '.h': 'C/C++ Header',
-        '.html': 'HTML',
-        '.css': 'CSS',
-    }
-
-    total_lines = 0
-    lines_by_language = defaultdict(int)
-    skipped_files = 0
-
-    for root, dirs, files in os.walk(repo_path):
-        for ignore_dir in ['.git', 'node_modules', '__pycache__', 'venv']:
-            if ignore_dir in dirs:
-                dirs.remove(ignore_dir)
-
-        for filename in files:
-            _, ext = os.path.splitext(filename)
-            ext = ext.lower()
-
-            if ext in valid_extensions:
-                file_path = os.path.join(root, filename)
-                try:
-                    with open(file_path, 'r', encoding='utf-8') as f:
-                        lines = f.readlines()
-                        line_count = len(lines)
-                        total_lines += line_count
-                        language = extension_to_language.get(ext, ext)
-                        lines_by_language[language] += line_count
-                except (UnicodeDecodeError, FileNotFoundError):
-                    skipped_files += 1
-
-    return {
-        'total_lines': total_lines,
-        'lines_by_language': dict(lines_by_language),
-        'skipped_files': skipped_files
-    }
-
+valid_extensions = ['.py', '.java', '.js', '.jsx', '.ts', '.tsx', '.c', '.cpp', '.h', '.html', '.css']
 
 import os
 import git
-from collections import Counter  # 如果后面还要用可以保留，否则可以删掉
+from collections import Counter
 from datetime import datetime
 
 def gather_repo_data(repo_path):
+    semestar_name = extract_semestar_name_from_path(repo_path)
     repo = git.Repo(repo_path)
     repo_name = os.path.basename(repo_path)
+    group_name = check_repo_name_valid(semestar_name, repo_path)
+    if group_name is None:
+        return None
 
     all_commits = set()
     commit_info_list = []
+
+    valid_extensions = ['.py', '.java', '.js', '.jsx', '.ts', '.tsx', '.c', '.cpp', '.h', '.html', '.css', '.md']
+    commit_file_stats =  {ext: 0 for ext in valid_extensions}
 
     for branch in repo.branches:
         for commit in repo.iter_commits(branch):
             if commit.hexsha not in all_commits:
                 all_commits.add(commit.hexsha)
+                valid, info = check_valid(semestar_name, commit.author.name, commit.committed_datetime.isoformat())
+                if not valid:
+                    continue
+                stats = commit.stats.total
                 commit_info = {
                     "commit_hash": commit.hexsha,
                     "author_name": commit.author.name,
-                    "author_email": commit.author.email,
+                    "author_email": commit.author.email,   
                     "committed_datetime": commit.committed_datetime.isoformat(),
-                    "message": commit.message.strip()
+                    "message": commit.message.strip(),
+                    "insertions": stats.get('insertions', 0),
+                    "deletions": stats.get('deletions', 0),
+                    "files_changed": stats.get('files', 0)
                 }
+                
+                stats = commit.stats.files  # 文件名 -> {'insertions': x, 'deletions': y, ...}
+                for file_path, file_stat in stats.items():
+                    _, ext = os.path.splitext(file_path)
+                    ext = ext.lower()
+                    if ext in valid_extensions:
+                        commit_file_stats[ext] += file_stat['insertions'] - file_stat['deletions']
+                
                 commit_info_list.append(commit_info)
 
-    code_line_data = count_code_lines(repo_path)
-
+    # remove_duplicate_commitors(commit_info_list)
+    
     return {
         "repo_name": repo_name,
+        "group_name": group_name,
         "commits": commit_info_list,
-        "code_line_data": code_line_data
+        "code_line_data": {
+            "total_lines": sum(commit_file_stats.values()),
+            "ext_status": commit_file_stats
+        }
     }
 
 
@@ -99,7 +79,9 @@ def process_repo(repo_path):
         res = gather_repo_data(repo_path)
         print("finished processing", repo_path)
         return res
+        
     except Exception as e:
+        raise e
         print(f"Failed to process {repo_path}: {e}")
         return None
 

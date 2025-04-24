@@ -2,26 +2,11 @@ import os
 import json
 import requests
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from tools import run_query
 
 ORGANIZATION = "sustech-cs304"
 MULTI_THREAD = True
-WORKERS = 16  # Useful when MULTI_THREAD is True
-
-GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
-if not GITHUB_TOKEN:
-    raise Exception("请设置环境变量 GITHUB_TOKEN")
-
-HEADERS = {"Authorization": f"Bearer {GITHUB_TOKEN}"}
-API_URL = "https://api.github.com/graphql"
-
-
-def run_query(query, variables):
-    response = requests.post(API_URL, json={"query": query, "variables": variables}, headers=HEADERS)
-    if response.status_code == 200:
-        return response.json()
-    else:
-        raise Exception(f"GraphQL query failed: {response.status_code}\n{response.text}")
-
+WORKERS = 16
 
 PR_QUERY = """
 query($owner: String!, $repo: String!, $first: Int!, $after: String) {
@@ -106,7 +91,7 @@ if __name__ == "__main__":
     base_out_dir = "./tmp"
     for filename in os.listdir(base_out_dir):
         if filename.endswith("local_data.json"):
-            local_data = json.load(open(os.path.join(base_out_dir, filename), "r"))
+            local_data = json.load(open(os.path.join(base_out_dir, filename), "r", encoding="utf-8"))
             for repo in local_data:
                 repos_to_fetch.append((ORGANIZATION, repo["repo_name"]))
 

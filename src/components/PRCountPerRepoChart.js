@@ -15,9 +15,9 @@ export default function PRCountPerRepoChart({ selectedSemester }) {
     fetch(DATA_URL)
       .then(res => res.json())
       .then(json => {
-        const { repo_names, pr_counts, average_pr } = json;
+        const { group_names, pr_counts, average_pr } = json;
 
-        const formattedData = repo_names.map((repo, idx) => ({
+        const formattedData = group_names.map((repo, idx) => ({
           repo,
           pr: pr_counts[idx] || 0,
         })).sort((a, b) => b.pr - a.pr); // 降序排序
@@ -40,6 +40,7 @@ export default function PRCountPerRepoChart({ selectedSemester }) {
           <XAxis dataKey="repo" angle={-45} textAnchor="end" height={100} interval={0} />
           <YAxis />
           <Tooltip />
+          <Bar dataKey="pr" fill="#8884d8" label={{ position: 'top' }} />
           <ReferenceLine
             y={avgPR}
             stroke="red"
@@ -52,7 +53,6 @@ export default function PRCountPerRepoChart({ selectedSemester }) {
               fontWeight: 'bold'
             }}
           />
-          <Bar dataKey="pr" fill="#8884d8" label={{ position: 'top' }} />
         </BarChart>
       </ResponsiveContainer>
     </div>

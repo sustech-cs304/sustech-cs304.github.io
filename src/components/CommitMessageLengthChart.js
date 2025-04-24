@@ -1,0 +1,74 @@
+import React, { useEffect, useState } from 'react';
+import {
+  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
+} from 'recharts';
+
+const BASE_URL = '/sustech-cs304';
+
+export default function CommitMessageLengthChart({ selectedSemester }) {
+  const [distributionData, setDistributionData] = useState([]);
+
+  useEffect(() => {
+    const DATA_URL = `${BASE_URL}/output/${selectedSemester}/commit_message_info.json`;
+
+    fetch(DATA_URL)
+      .then(res => res.json())
+      .then(json => {
+        const { length_distribution } = json;
+        setDistributionData(length_distribution || []);
+      })
+      .catch(err => {
+        console.error('加载 commit message length 分布数据失败:', err);
+        setDistributionData([]);
+      });
+  }, [selectedSemester]);
+
+  const groupCounts = distributionData.map(d => d.count || 0);
+  const maxY = Math.max(...groupCounts);
+  const minY = Math.min(...groupCounts);
+  const yDomain = [
+    Math.floor(minY * 0.8) - 0.3,
+    Math.ceil(maxY * 1.2)
+  ];
+
+  return (
+    <div style={{ width: '100%', height: 500 }}>
+      <ResponsiveContainer width="100%" height="100%">
+        <LineChart data={distributionData}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis
+            dataKey="length_range"
+            label={{ value: 'Message Length Range', position: 'insideBottom', offset: -5 }}
+            interval={0}
+            angle={-30}
+            textAnchor="end"
+          />
+          <YAxis
+            label={{ value: 'Number of Messages', angle: -90, position: 'insideLeft' }}
+            domain={yDomain}
+            allowDataOverflow
+          />
+          <Tooltip />
+          <Line
+            type="monotone"
+            dataKey="count"
+            stroke="#8884d8"
+            strokeWidth={2}
+            dot={{ r: 4 }}
+            label={({ x, y, value }) => (
+              <text
+                x={x}
+                y={y - 8}
+                fill="#000000"
+                fontSize={16}
+                textAnchor="middle"
+              >
+                {value}
+              </text>
+            )}
+          />
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
+  );
+}

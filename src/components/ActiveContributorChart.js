@@ -15,8 +15,8 @@ export default function ActiveContributorChart({ selectedSemester }) {
       .then(res => res.json())
       .then(json => {
         const sortedData = json
-          .map(({ repo_name, active_contributor_count }) => ({
-            repo: repo_name,
+          .map(({ group_name, active_contributor_count }) => ({
+            repo: group_name,
             contributors: active_contributor_count,
           }))
           .sort((a, b) => b.contributors - a.contributors); // 降序

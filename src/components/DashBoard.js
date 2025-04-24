@@ -12,6 +12,15 @@ import IssueCountPerRepoChart from './IssueCountPerRepoChart';
 import IssueStatusPieChart from './IssueStatusPieChart';
 import ActiveContributorChart from './ActiveContributorChart';
 import ActiveContributorPieChart from './ActiveContributorPieChart';
+import BranchCountPerRepoChart from './BranchCountPerRepoChart';
+import BranchCountDistributionChart from './BranchCountDistributionChart';
+import IssueDistributionChart from './IssueDistributionChart';
+import PRDistributionChart from './PRDistributionChart';
+import CommitDistributionChart from './CommitDistributionChart';
+import GiniCommitDistributionChart from './GinCommitiDistributionChart';
+import GiniChangeLinesDistributionChart from './GiniChangeLinesDistributionChart';
+import CommitMessageLanguageDistribution from './CommitMessageLanguageDistribution';
+import CommitMessageLengthChart from './CommitMessageLengthChart';
 
 const SEMESTERS = ['23 Spring', '24 Spring', '25 Spring'];
 
@@ -38,63 +47,136 @@ export default function Dashboard() {
         >
           <CommitDateLineChart selectedSemester={selectedSemester} />
         </ChartCard>
+
         <ChartCard 
           title="Hourly Commit Distribution"
           reverse={true}
         >
           <CommitHourBarChart selectedSemester={selectedSemester} />
         </ChartCard>
+
         <ChartCard 
           title="Commit Count per Repo"
           reverse={false}
         >
           <CommitCountPerRepoChart selectedSemester={selectedSemester} />
         </ChartCard>
-        <ChartCard 
-          title="Code Line Count per Repo"
+
+        <ChartCard
+          title="Commit Distribution"
           reverse={true}
+        >
+          <CommitDistributionChart selectedSemester={selectedSemester} />
+        </ChartCard>
+
+        <ChartCard
+          title="Gini Commit Distribution"
+          reverse={false}
+        >
+          <GiniCommitDistributionChart selectedSemester={selectedSemester} />
+        </ChartCard>
+
+        <ChartCard
+          title="Gini Change Lines Distribution"
+          reverse={true}
+        >
+          <GiniChangeLinesDistributionChart selectedSemester={selectedSemester} />
+        </ChartCard>
+
+        <ChartCard
+          title="Commit Message Language Distribution"
+          reverse={false}
+        >
+          <CommitMessageLanguageDistribution selectedSemester={selectedSemester} />
+        </ChartCard>
+
+        <ChartCard
+          title="Commit Message Length Distribution"
+          reverse={true}
+        >
+          <CommitMessageLengthChart selectedSemester={selectedSemester} />
+        </ChartCard>
+
+        <ChartCard 
+            title="Code Line Count per Repo"
+            reverse={false}
         >
           <CodeLineCountChart selectedSemester={selectedSemester} />
         </ChartCard>
+
         <ChartCard 
-          title="Programming Language Distribution"
-          reverse={false}
+            title="Programming Language Distribution"
+            reverse={true}
         >
           <LanguageDistributionPieChart selectedSemester={selectedSemester} />
         </ChartCard>
+
         <ChartCard 
-          title="PR Count per Repo"
-          reverse={true}
+            title="PR Count per Repo"
+            reverse={false}
         >
           <PRCountPerRepoChart selectedSemester={selectedSemester} />
         </ChartCard>
+
         <ChartCard 
           title="PR Merge Status"
-          reverse={false}
+          reverse={true}
         >
           <PRStatusPieChart selectedSemester={selectedSemester} />
         </ChartCard>
+
+        <ChartCard
+          title="PR Distribution"
+          reverse={false}
+        >
+          <PRDistributionChart  selectedSemester={selectedSemester} />
+        </ChartCard>
+
         <ChartCard 
           title="Issue Count per Repo"
           reverse={true}
         >
           <IssueCountPerRepoChart selectedSemester={selectedSemester} />
         </ChartCard>
+
+        <ChartCard 
+          title="Issue Distribution"
+          reverse={false}
+        >
+          <IssueDistributionChart selectedSemester={selectedSemester} />
+        </ChartCard>
+
         <ChartCard 
           title="Issue Closed Status"
-          reverse={false}
+          reverse={true}
         >
           <IssueStatusPieChart selectedSemester={selectedSemester} />
         </ChartCard>
+
+        <ChartCard 
+          title="Branch Count per Repo"
+          reverse={false}
+        >
+          <BranchCountPerRepoChart selectedSemester={selectedSemester} />
+        </ChartCard>
+
+        <ChartCard 
+          title="Branch Count Distribution"
+          reverse={true}
+        >
+          <BranchCountDistributionChart selectedSemester={selectedSemester} />
+        </ChartCard>
+
         <ChartCard 
           title="Active Contributors per Project"
-          reverse={true}
+          reverse={false}
         >
           <ActiveContributorChart selectedSemester={selectedSemester} />
         </ChartCard>
+        
         <ChartCard 
           title="Active Contributor Distribution"
-          reverse={false}
+          reverse={true}
         >
           <ActiveContributorPieChart selectedSemester={selectedSemester} />
         </ChartCard>

@@ -15,9 +15,9 @@ export default function IssueCountPerRepoChart({ selectedSemester }) {
     fetch(DATA_URL)
       .then(res => res.json())
       .then(json => {
-        const { repo_names, issue_counts, average_issues } = json;
+        const { group_names, issue_counts, average_issues } = json;
 
-        const formattedData = repo_names.map((repo, idx) => ({
+        const formattedData = group_names.map((repo, idx) => ({
           repo,
           issues: issue_counts[idx] || 0,
         })).sort((a, b) => b.issues - a.issues); // 降序排序
@@ -31,7 +31,8 @@ export default function IssueCountPerRepoChart({ selectedSemester }) {
         setAvgIssue(0);
       });
   }, [selectedSemester]);
-
+  console.log("issue");
+  console.log(data);
   return (
     <div style={{ width: '100%', height: 500 }}>
 
@@ -41,6 +42,7 @@ export default function IssueCountPerRepoChart({ selectedSemester }) {
           <XAxis dataKey="repo" angle={-45} textAnchor="end" height={100} interval={0} />
           <YAxis />
           <Tooltip />
+          <Bar dataKey="issues" fill="#8884d8" label={{ position: 'top' }} />
           <ReferenceLine
             y={avgIssue}
             stroke="red"
@@ -53,7 +55,6 @@ export default function IssueCountPerRepoChart({ selectedSemester }) {
               fontWeight: 'bold'
             }}
           />
-          <Bar dataKey="issues" fill="#8884d8" label={{ position: 'top' }} />
         </BarChart>
       </ResponsiveContainer>
     </div>
