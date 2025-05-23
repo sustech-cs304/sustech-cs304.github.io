@@ -28,8 +28,7 @@ export default function Dashboard() {
   const [selectedSemester, setSelectedSemester] = useState('23 Spring');
 
   return (
-    <div className="dashboard-container">
-      {/* Header和学期选择器 */}
+    <div className="dashboard">
       <div className="dashboard-header">
         <h2>Dashboard Visualization Panel</h2>
         <SemesterSelector 

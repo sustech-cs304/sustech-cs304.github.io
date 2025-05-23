@@ -9,21 +9,25 @@ export default function CommitCountPerRepoChart({ selectedSemester }) {
   const [data, setData] = useState([]);
   const [avgCommits, setAvgCommits] = useState(0);
 
-  useEffect(() => {
-    const DATA_URL = `${BASE_URL}/output/${selectedSemester}/commit_count_per_repo.json`;
+  function getSemesterKey(selectedSemester) {
+    return selectedSemester.replace(/\s/g, '').toLowerCase();
+  }
 
+  useEffect(() => {
+    const DATA_URL = `${BASE_URL}/chart_data.json`;
     fetch(DATA_URL)
       .then(res => res.json())
       .then(json => {
-        const { group_names, commit_counts, average_commit_count } = json;
-
-        const formattedData = group_names.map((repo, idx) => ({
+        const semesterKey = getSemesterKey(selectedSemester);
+        const groupNames = json[semesterKey]?.commit_count_per_repo?.group_names || [];
+        const commitCounts = json[semesterKey]?.commit_count_per_repo?.commit_counts || [];
+        const averageCommitCount = json[semesterKey]?.commit_count_per_repo?.average_commit_count || 0;
+        const formattedData = groupNames.map((repo, idx) => ({
           repo,
-          commits: commit_counts[idx] || 0,
-        })).sort((a, b) => b.commits - a.commits); // 排序
-
+          commits: commitCounts[idx] || 0,
+        })).sort((a, b) => b.commits - a.commits);
         setData(formattedData);
-        setAvgCommits(average_commit_count);
+        setAvgCommits(averageCommitCount);
       })
       .catch(err => {
         console.error('加载 commit count 数据失败:', err);

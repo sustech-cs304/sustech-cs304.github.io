@@ -8,37 +8,64 @@
   }
   
   .dashboard-header {
-    text-align: center;
-    margin-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    width: 100%;
   }
   
-  .dashboard-header h2 {
+  .dashboard-title {
     font-size: 1.5rem;
-    font-weight: bold;
-    color: #2D3748;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
   }
   
   /* 学期选择器 */
   .semester-selector {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    margin-top: 16px;
+    gap: 0.5rem;
   }
   
-  .semester-select {
-    width: 16rem;
-    height: 56px;
-    border: 1px solid #D2D6DC;
-    border-radius: 0.375rem;
-    padding: 8px 16px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    transition: all 0.2s ease-in-out;
+  .semester-selector select {
+    padding: 0.5rem 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: white;
+    font-size: 0.9rem;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  .semester-selector select:hover {
+    border-color: #2563eb;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.1);
+  }
+  
+  .semester-selector select:focus {
     outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
   }
   
-  .semester-select:focus {
-    box-shadow: 0 0 0 2px #4299E1;
+  @media (max-width: 768px) {
+    .dashboard-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    
+    .semester-selector {
+      width: 100%;
+    }
+    
+    .semester-selector select {
+      width: 100%;
+    }
   }
   
   /* 单列卡片容器 */
@@ -47,11 +74,12 @@
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    width: 100%;
   }
   
   /* 每个图表卡片 */
   .chart-card {
-    width: 60vw;  /* 每张卡片宽度为屏幕60% */
+    width: 100%;
     background-color: #ffffff;
     border-radius: 1rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -99,5 +127,21 @@
     font-size: 1rem;
     color: #4A5568;
     line-height: 1.5;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .chart-card-content {
+      flex-direction: column;
+      height: auto;
+    }
+  
+    .chart-image,
+    .chart-text {
+      flex: 0 0 100%;
+    }
+  
+    .chart-text {
+      padding: 20px 0;
+    }
   }
   

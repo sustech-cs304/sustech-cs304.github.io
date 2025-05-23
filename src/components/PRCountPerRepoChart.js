@@ -9,21 +9,25 @@ export default function PRCountPerRepoChart({ selectedSemester }) {
   const [data, setData] = useState([]);
   const [avgPR, setAvgPR] = useState(0);
 
-  useEffect(() => {
-    const DATA_URL = `${BASE_URL}/output/${selectedSemester}/pr_count_per_repo.json`;
+  function getSemesterKey(selectedSemester) {
+    return selectedSemester.replace(/\s/g, '').toLowerCase();
+  }
 
+  useEffect(() => {
+    const DATA_URL = `${BASE_URL}/chart_data.json`;
     fetch(DATA_URL)
       .then(res => res.json())
       .then(json => {
-        const { group_names, pr_counts, average_pr } = json;
-
-        const formattedData = group_names.map((repo, idx) => ({
+        const semesterKey = getSemesterKey(selectedSemester);
+        const groupNames = json[semesterKey]?.pr_count_per_repo?.group_names || [];
+        const prCounts = json[semesterKey]?.pr_count_per_repo?.pr_counts || [];
+        const averagePR = json[semesterKey]?.pr_count_per_repo?.average_pr || 0;
+        const formattedData = groupNames.map((repo, idx) => ({
           repo,
-          pr: pr_counts[idx] || 0,
-        })).sort((a, b) => b.pr - a.pr); // 降序排序
-
+          pr: prCounts[idx] || 0,
+        })).sort((a, b) => b.pr - a.pr);
         setData(formattedData);
-        setAvgPR(average_pr);
+        setAvgPR(averagePR);
       })
       .catch(err => {
         console.error('加载 PR 数据失败:', err);

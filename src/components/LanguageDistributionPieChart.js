@@ -9,27 +9,29 @@ const COLORS = [
   '#ffc658', '#ff8042', '#d88884', '#a28df4', '#bbbbbb' // 最后一个为 Other 用灰色
 ];
 const THRESHOLD_OTHER = 0.03;
+
+function getSemesterKey(selectedSemester) {
+  return selectedSemester.replace(/\s/g, '').toLowerCase();
+}
+
 export default function LanguageDistributionPieChart({ selectedSemester }) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const DATA_URL = `${BASE_URL}/output/${selectedSemester}/language_distribution.json`;
-
+    const DATA_URL = `${BASE_URL}/chart_data.json`;
     fetch(DATA_URL)
       .then(res => res.json())
       .then(json => {
-        const { languages, counts } = json;
+        const semesterKey = getSemesterKey(selectedSemester);
+        const { languages = [], counts = [] } = json[semesterKey]?.language_distribution || {};
         const rawData = languages.map((lang, idx) => ({
           name: lang,
           value: counts[idx] || 0,
         }));
-
         const total = rawData.reduce((sum, item) => sum + item.value, 0);
         const threshold = total * THRESHOLD_OTHER;
-
         const filtered = [];
         let otherTotal = 0;
-
         rawData.forEach(item => {
           if (item.value >= threshold) {
             filtered.push(item);
@@ -37,11 +39,9 @@ export default function LanguageDistributionPieChart({ selectedSemester }) {
             otherTotal += item.value;
           }
         });
-
         if (otherTotal > 0) {
           filtered.push({ name: 'Other', value: otherTotal });
         }
-
         setData(filtered);
       })
       .catch(err => {
@@ -60,8 +60,19 @@ export default function LanguageDistributionPieChart({ selectedSemester }) {
             nameKey="name"
             cx="50%"
             cy="50%"
-            outerRadius={150}
-            label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(1)}%`}
+            outerRadius={180}
+            label={props => {
+              const { name, percent, x, y, index, cx, cy, outerRadius, midAngle } = props;
+              const RADIAN = Math.PI / 180;
+              const radius = outerRadius + 24;
+              const xOut = cx + radius * Math.cos(-midAngle * RADIAN);
+              const yOut = cy + radius * Math.sin(-midAngle * RADIAN);
+              return (
+                <text x={xOut} y={yOut} fontSize={18} fill={COLORS[index % COLORS.length]} textAnchor={xOut > cx ? 'start' : 'end'} dominantBaseline="central">
+                  {`${name}: ${(percent * 100).toFixed(1)}%`}
+                </text>
+              );
+            }}
           >
             {data.map((_, index) => (
               <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />

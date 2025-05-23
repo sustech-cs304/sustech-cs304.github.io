@@ -4,7 +4,7 @@
     * 24 Spring: `gh classroom clone student-repos -a 558214`
     * 23 Spring: `gh classroom clone student-repos -a 403123`
     * ......
-    OR pull new requests:
+    OR pull new commits:
     * 25 Spring: `gh classroom pull student-repos -a 749620`
     * 24 Spring: `gh classroom pull student-repos -a 558214`
     * 23 Spring: `gh classroom pull student-repos -a 403123`
@@ -18,3 +18,16 @@
    * gather pr data: `python .\scripts\gather_pr_from_remote_repos.py`
    * gather issue data: `python .\scripts\gather_issue_from_remote_repos.py`
 8. prepare data to draw charts: `python .\scripts\generate_graph_data.py`
+
+METAINFO:
+
+Classroom names and ids:
+
+* sustech-cs304-classroom-23spring: 152718
+* 24spring: 206118
+* sustech-cs304-25Spring: 253851
+
+Assignment names and ids:
+23spring Team project: 403123
+24spring Team project: 558214
+25spring Team project: 749620

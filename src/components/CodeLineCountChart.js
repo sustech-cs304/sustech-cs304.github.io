@@ -9,21 +9,25 @@ export default function CodeLineCountChart({ selectedSemester }) {
   const [data, setData] = useState([]);
   const [avgLines, setAvgLines] = useState(0);
 
-  useEffect(() => {
-    const DATA_URL = `${BASE_URL}/output/${selectedSemester}/code_line_per_repo.json`;
+  function getSemesterKey(selectedSemester) {
+    return selectedSemester.replace(/\s/g, '').toLowerCase();
+  }
 
+  useEffect(() => {
+    const DATA_URL = `${BASE_URL}/chart_data.json`;
     fetch(DATA_URL)
       .then(res => res.json())
       .then(json => {
-        const { group_names, total_lines, average_lines } = json;
-
-        const formattedData = group_names.map((repo, idx) => ({
+        const semesterKey = getSemesterKey(selectedSemester);
+        const groupNames = json[semesterKey]?.code_line_per_repo?.group_names || [];
+        const totalLines = json[semesterKey]?.code_line_per_repo?.total_lines || [];
+        const averageLines = json[semesterKey]?.code_line_per_repo?.average_lines || 0;
+        const formattedData = groupNames.map((repo, idx) => ({
           repo,
-          lines: total_lines[idx] || 0,
-        })).sort((a, b) => b.lines - a.lines); // 降序
-
+          lines: totalLines[idx] || 0,
+        })).sort((a, b) => b.lines - a.lines);
         setData(formattedData);
-        setAvgLines(average_lines);
+        setAvgLines(averageLines);
       })
       .catch(err => {
         console.error('加载代码行数失败:', err);

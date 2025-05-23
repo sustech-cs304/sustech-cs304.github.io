@@ -12,16 +12,20 @@ function formatHourLabel(hour) {
   return `${pad(hour)}:00 - ${pad(nextHour)}:00`;
 }
 
+function getSemesterKey(selectedSemester) {
+  return selectedSemester.replace(/\s/g, '').toLowerCase();
+}
+
 export default function CommitHourBarChart({ selectedSemester }) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const DATA_URL = `${BASE_URL}/output/${selectedSemester}/commit_time_distribution_hourly.json`;
-
+    const DATA_URL = `${BASE_URL}/chart_data.json`;
     fetch(DATA_URL)
       .then(res => res.json())
       .then(json => {
-        const { hours, counts } = json;
+        const semesterKey = getSemesterKey(selectedSemester);
+        const { hours = [], counts = [] } = json[semesterKey]?.commit_time_distribution_hourly || {};
         const formattedData = hours.map((hour, idx) => ({
           hourLabel: formatHourLabel(hour),
           commits: counts[idx] || 0,

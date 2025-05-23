@@ -5,35 +5,34 @@ import {
 
 const BASE_URL = '/sustech-cs304';
 
+function getSemesterKey(selectedSemester) {
+  return selectedSemester.replace(/\s/g, '').toLowerCase();
+}
+
 export default function PRDistributionChart({ selectedSemester }) {
   const [distributionData, setDistributionData] = useState([]);
 
   useEffect(() => {
-    const DATA_URL = `${BASE_URL}/output/${selectedSemester}/pr_count_per_repo.json`;
-
+    const DATA_URL = `${BASE_URL}/chart_data.json`;
     fetch(DATA_URL)
       .then(res => res.json())
       .then(json => {
-        const { pr_counts } = json;
-
+        const semesterKey = getSemesterKey(selectedSemester);
+        const pr_counts = json[semesterKey]?.pr_count_per_repo?.pr_counts || [];
         if (!pr_counts || pr_counts.length === 0) return;
-
         const min = Math.min(...pr_counts);
         const max = Math.max(...pr_counts);
-        const numBins = Math.ceil(Math.sqrt(pr_counts.length)); // √n 分 bin
+        const numBins = Math.ceil(Math.sqrt(pr_counts.length));
         const binWidth = Math.ceil((max - min + 1) / numBins);
-
         const bins = new Array(numBins).fill(0);
         pr_counts.forEach(count => {
           const index = Math.min(Math.floor((count - min) / binWidth), numBins - 1);
           bins[index]++;
         });
-
         const chartData = bins.map((groupCount, idx) => ({
           pr_range: `${min + idx * binWidth}-${min + (idx + 1) * binWidth - 1}`,
           group_count: groupCount,
         }));
-
         setDistributionData(chartData);
       })
       .catch(err => {

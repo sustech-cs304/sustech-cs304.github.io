@@ -5,23 +5,29 @@ import {
 
 const BASE_URL = '/sustech-cs304';
 
+function getSemesterKey(selectedSemester) {
+  return selectedSemester.replace(/\s/g, '').toLowerCase();
+}
+
 export default function BranchCountPerRepoChart({ selectedSemester }) {
   const [data, setData] = useState([]);
   const [avgBranch, setAvgBranch] = useState(0);
 
   useEffect(() => {
-    const DATA_URL = `${BASE_URL}/output/${selectedSemester}/branch_count_per_repo.json`;
-
+    const DATA_URL = `${BASE_URL}/chart_data.json`;
     fetch(DATA_URL)
       .then(res => res.json())
       .then(json => {
-        const { group_names, branch_counts, average_branches} = json;
-        const formattedData = group_names.map((repo, idx) => ({
+        const semesterKey = getSemesterKey(selectedSemester);
+        const branchCounts = json[semesterKey]?.branch_count_per_repo?.branch_counts || [];
+        const groupNames = json[semesterKey]?.branch_count_per_repo?.group_names || [];
+        const averageBranches = json[semesterKey]?.branch_count_per_repo?.average_branches || 0;
+        const formattedData = groupNames.map((repo, idx) => ({
           repo,
-          branch: branch_counts[idx] || 0,
-        })).sort((a, b) => b.branch - a.branch); // 降序排序
+          branch: branchCounts[idx] || 0,
+        })).sort((a, b) => b.branch - a.branch);
         setData(formattedData);
-        setAvgBranch(average_branches);
+        setAvgBranch(averageBranches);
       })
       .catch(err => {
         console.error('加载 branch 数据失败:', err);

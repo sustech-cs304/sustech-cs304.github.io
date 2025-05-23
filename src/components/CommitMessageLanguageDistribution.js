@@ -10,15 +10,18 @@ const COLORS = ['#8884d8', '#82ca9d', '#ffc658']; // 中文 / 英文 / 混合
 export default function CommitMessageLanguageDistribution({ selectedSemester }) {
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    const DATA_URL = `${BASE_URL}/output/${selectedSemester}/commit_message_info.json`;
+  function getSemesterKey(selectedSemester) {
+    return selectedSemester.replace(/\s/g, '').toLowerCase();
+  }
 
+  useEffect(() => {
+    const DATA_URL = `${BASE_URL}/chart_data.json`;
     fetch(DATA_URL)
       .then(res => res.json())
       .then(json => {
-        const langCounter = json["lang_counter"];
+        const semesterKey = getSemesterKey(selectedSemester);
+        const langCounter = json[semesterKey]?.commit_message_info?.lang_counter || {};
         if (!langCounter) return;
-
         const formatted = Object.entries(langCounter).map(([lang, count]) => ({
           name:
             lang === 'chinese'
@@ -28,7 +31,6 @@ export default function CommitMessageLanguageDistribution({ selectedSemester }) 
               : 'Mix',
           value: count
         }));
-
         setData(formatted);
       })
       .catch(err => {
@@ -38,7 +40,7 @@ export default function CommitMessageLanguageDistribution({ selectedSemester }) 
   }, [selectedSemester]);
 
   return (
-    <div style={{ width: '100%', height: 400 }}>
+    <div style={{ width: '100%', height: 500 }}>
       <ResponsiveContainer width="100%" height="100%">
         <PieChart>
           <Pie
@@ -47,8 +49,20 @@ export default function CommitMessageLanguageDistribution({ selectedSemester }) 
             nameKey="name"
             cx="50%"
             cy="50%"
-            outerRadius={130}
-            label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(1)}%`}
+            outerRadius={180}
+            label={props => {
+              const { name, percent, x, y, index, cx, cy, outerRadius, midAngle } = props;
+              const RADIAN = Math.PI / 180;
+              const radius = outerRadius + 24;
+              const xOut = cx + radius * Math.cos(-midAngle * RADIAN);
+              const yOut = cy + radius * Math.sin(-midAngle * RADIAN);
+              const cleanName = name.replace(/-group$/, '');
+              return (
+                <text x={xOut} y={yOut} fontSize={18} fill={COLORS[index % COLORS.length]} textAnchor={xOut > cx ? 'start' : 'end'} dominantBaseline="central">
+                  {`${cleanName}: ${(percent * 100).toFixed(1)}%`}
+                </text>
+              );
+            }}
           >
             {data.map((_, idx) => (
               <Cell key={`cell-${idx}`} fill={COLORS[idx % COLORS.length]} />

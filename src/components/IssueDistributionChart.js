@@ -5,37 +5,34 @@ import {
 
 const BASE_URL = '/sustech-cs304';
 
+function getSemesterKey(selectedSemester) {
+  return selectedSemester.replace(/\s/g, '').toLowerCase();
+}
+
 export default function IssueDistributionChart({ selectedSemester }) {
   const [distributionData, setDistributionData] = useState([]);
 
   useEffect(() => {
-    const DATA_URL = `${BASE_URL}/output/${selectedSemester}/issue_count_per_repo.json`;
-
+    const DATA_URL = `${BASE_URL}/chart_data.json`;
     fetch(DATA_URL)
       .then(res => res.json())
       .then(json => {
-        const { issue_counts } = json;
-
+        const semesterKey = getSemesterKey(selectedSemester);
+        const issue_counts = json[semesterKey]?.issue_count_per_repo?.issue_counts || [];
         if (!issue_counts || issue_counts.length === 0) return;
-
         const min = Math.min(...issue_counts);
         const max = Math.max(...issue_counts);
-        const numBins = Math.ceil(Math.sqrt(issue_counts.length)); // 常用分 bin 公式 √n
+        const numBins = Math.ceil(Math.sqrt(issue_counts.length));
         const binWidth = Math.ceil((max - min + 1) / numBins);
-
-        // 初始化 bin
         const bins = new Array(numBins).fill(0);
         issue_counts.forEach(count => {
           const index = Math.min(Math.floor((count - min) / binWidth), numBins - 1);
           bins[index]++;
         });
-
-        // 构造 chartData
         const chartData = bins.map((groupCount, idx) => ({
           issue_range: `${min + idx * binWidth}-${min + (idx + 1) * binWidth - 1}`,
           group_count: groupCount,
         }));
-
         setDistributionData(chartData);
       })
       .catch(err => {

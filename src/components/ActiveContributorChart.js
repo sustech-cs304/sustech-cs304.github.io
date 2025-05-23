@@ -5,21 +5,26 @@ import {
 
 const BASE_URL = '/sustech-cs304';
 
+function getSemesterKey(selectedSemester) {
+  return selectedSemester.replace(/\s/g, '').toLowerCase();
+}
+
 export default function ActiveContributorChart({ selectedSemester }) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const DATA_URL = `${BASE_URL}/output/${selectedSemester}/repo_active_contributor_count.json`;
-
+    const DATA_URL = `${BASE_URL}/chart_data.json`;
     fetch(DATA_URL)
       .then(res => res.json())
       .then(json => {
-        const sortedData = json
+        const semesterKey = getSemesterKey(selectedSemester);
+        const rawData = json[semesterKey]?.repo_active_contributor_count || [];
+        const sortedData = rawData
           .map(({ group_name, active_contributor_count }) => ({
             repo: group_name,
             contributors: active_contributor_count,
           }))
-          .sort((a, b) => b.contributors - a.contributors); // 降序
+          .sort((a, b) => b.contributors - a.contributors);
         setData(sortedData);
       })
       .catch(err => {

@@ -9,25 +9,26 @@ export default function CommitDateLineChart({ selectedSemester }) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const DATA_URL = `${BASE_URL}/output/${selectedSemester}/commit_time_distribution_date.json`;
-    setLoading(true);
+  function getSemesterKey(selectedSemester) {
+    return selectedSemester.replace(/\s/g, '').toLowerCase();
+  }
 
+  useEffect(() => {
+    const DATA_URL = `${BASE_URL}/chart_data.json`;
+    setLoading(true);
     fetch(DATA_URL)
       .then(res => res.json())
       .then(json => {
-        const { full_dates, counts } = json;
-
+        const semesterKey = getSemesterKey(selectedSemester);
+        const { full_dates = [], counts = [] } = json[semesterKey]?.commit_time_distribution_date || {};
         const dateRanges = {
           '23 Spring': ['2023-02-01', '2023-06-10'],
           '24 Spring': ['2024-02-01', '2024-06-10'],
           '25 Spring': ['2025-02-01', '2025-06-10'],
         };
-
         const [startStr, endStr] = dateRanges[selectedSemester];
         const start = new Date(startStr);
         const end = new Date(endStr);
-        
         const filtered = full_dates
           .map((date, idx) => ({
             date,
@@ -37,7 +38,6 @@ export default function CommitDateLineChart({ selectedSemester }) {
             const d = new Date(date);
             return d >= start && d <= end;
           });
-
         setData(filtered);
       })
       .catch(err => {

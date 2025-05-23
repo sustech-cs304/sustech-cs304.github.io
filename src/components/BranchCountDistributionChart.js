@@ -8,17 +8,20 @@ const BASE_URL = '/sustech-cs304';
 export default function BranchDistributionChart({ selectedSemester }) {
   const [distributionData, setDistributionData] = useState([]);
 
-  useEffect(() => {
-    const DATA_URL = `${BASE_URL}/output/${selectedSemester}/branch_count_per_repo.json`;
+  function getSemesterKey(selectedSemester) {
+    return selectedSemester.replace(/\s/g, '').toLowerCase();
+  }
 
+  useEffect(() => {
+    const DATA_URL = `${BASE_URL}/chart_data.json`;
     fetch(DATA_URL)
       .then(res => res.json())
       .then(json => {
-        const { branch_counts } = json;
-
+        const semesterKey = getSemesterKey(selectedSemester);
+        const branchCounts = json[semesterKey]?.branch_count_per_repo?.branch_counts || [];
         // Calculate frequency of each branch count
         const frequencyMap = {};
-        branch_counts.forEach(count => {
+        branchCounts.forEach(count => {
           frequencyMap[count] = (frequencyMap[count] || 0) + 1;
         });
 

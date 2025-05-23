@@ -5,25 +5,29 @@ import {
 
 const BASE_URL = '/sustech-cs304';
 
+function getSemesterKey(selectedSemester) {
+  return selectedSemester.replace(/\s/g, '').toLowerCase();
+}
+
 export default function IssueCountPerRepoChart({ selectedSemester }) {
   const [data, setData] = useState([]);
   const [avgIssue, setAvgIssue] = useState(0);
 
   useEffect(() => {
-    const DATA_URL = `${BASE_URL}/output/${selectedSemester}/issue_count_per_repo.json`;
-
+    const DATA_URL = `${BASE_URL}/chart_data.json`;
     fetch(DATA_URL)
       .then(res => res.json())
       .then(json => {
-        const { group_names, issue_counts, average_issues } = json;
-
-        const formattedData = group_names.map((repo, idx) => ({
+        const semesterKey = getSemesterKey(selectedSemester);
+        const groupNames = json[semesterKey]?.issue_count_per_repo?.group_names || [];
+        const issueCounts = json[semesterKey]?.issue_count_per_repo?.issue_counts || [];
+        const averageIssues = json[semesterKey]?.issue_count_per_repo?.average_issues || 0;
+        const formattedData = groupNames.map((repo, idx) => ({
           repo,
-          issues: issue_counts[idx] || 0,
-        })).sort((a, b) => b.issues - a.issues); // 降序排序
-
+          issues: issueCounts[idx] || 0,
+        })).sort((a, b) => b.issues - a.issues);
         setData(formattedData);
-        setAvgIssue(average_issues);
+        setAvgIssue(averageIssues);
       })
       .catch(err => {
         console.error('加载 issue 数据失败:', err);

@@ -1,18 +1,20 @@
 import json
 import os
 
+# github classroom 的成员
 total_classroom_user = json.load(open("./tmp/classroom_users.json", "r", encoding="utf-8"))
 valid_user_ids = [u["id"] for u in total_classroom_user]
 
 email2uid = {}
+# 维护email2uid
 for folder in os.listdir("./tmp/users/"):
     if folder.endswith(".json"):
-        remote_user_info = json.load(open("./tmp/users/" + folder, "r", encoding="utf-8"))
+        remote_user_info = json.load(open("./tmp/users/" + folder, "r", encoding="utf-8"))  # remote的commit信息
         for u in remote_user_info:
-            if u["id"] not in valid_user_ids:
+            if u["id"] not in valid_user_ids:  # uid不在classroom成员中，直接滚
                 continue
             
-            if u["email"] not in email2uid:
+            if u["email"] not in email2uid:  # 使用email追踪commit author
                 email2uid[u["email"]] = u["id"]
             else:
                 assert email2uid[u["email"]] == u["id"], f"{folder}, {u['email']}, {u['id']}"
@@ -25,7 +27,7 @@ for filename in os.listdir(base_out_dir):
         for repo in local_data:
             valid_commit = []
             for commit in repo["commits"]:
-                if commit["author_email"] not in email2uid:
+                if commit["author_email"] not in email2uid:  # 鉴定为外部commitor
                     continue
 
                 commit["author_id"] = email2uid[commit["author_email"]]

@@ -5,13 +5,6 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from tools import run_query
 
-import os
-import json
-import requests
-from concurrent.futures import ThreadPoolExecutor, as_completed
-
-from tools import run_query
-
 ORGANIZATION = "sustech-cs304"
 MULTI_THREAD = True
 WORKERS = 16
