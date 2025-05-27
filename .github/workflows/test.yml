@@ -1,0 +1,8 @@
+name: Debug Trigger Test
+on: push # 这会匹配任何分支的任何推送
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Debug workflow triggered on push!"
