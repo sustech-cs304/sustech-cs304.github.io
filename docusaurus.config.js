@@ -17,16 +17,16 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://wls2002.github.io',
+  url: 'https://sustech-cs304.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/sustech-cs304/',
+  baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   // organizationName: 'facebook', // Usually your GitHub org/user name.
   projectName: 'sustech-cs304', // Usually your repo name.
-  organizationName: 'wls2002',
+  organizationName: 'sustech',
   trailingSlash: false,
 
   favicon: '/img/校徽.ico',
