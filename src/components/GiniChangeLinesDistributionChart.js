@@ -12,7 +12,7 @@ export default function GiniAddLinesDistributionChart({ selectedSemester }) {
   }
 
   useEffect(() => {
-    const DATA_URL = `/sustech-cs304/chart_data.json`;
+    const DATA_URL = `/chart_data.json`;
     fetch(DATA_URL)
       .then(res => res.json())
       .then(json => {
@@ -31,7 +31,7 @@ export default function GiniAddLinesDistributionChart({ selectedSemester }) {
           group_count: count
         }));
         setDistributionData(chartData);
-        // 1. 只记录最大值索引
+        // 1. Only record max value index
         let maxIdx = 0;
         chartData.forEach((d, i) => {
           if (d.group_count > chartData[maxIdx].group_count) maxIdx = i;
@@ -39,7 +39,7 @@ export default function GiniAddLinesDistributionChart({ selectedSemester }) {
         setKeyPoints([maxIdx]);
       })
       .catch(err => {
-        console.error('加载 gini_add_lines 分布失败:', err);
+        console.error('Failed to load gini_add_lines distribution:', err);
         setDistributionData([]);
         setKeyPoints([]);
       });
@@ -49,7 +49,7 @@ export default function GiniAddLinesDistributionChart({ selectedSemester }) {
   const maxY = Math.max(...yValues, 0);
   const yDomain = [0, Math.ceil(maxY * 1.2)];
 
-  // 2. renderLabel 只渲染最大值且 value 不为 0
+      // 2. renderLabel only renders max value and value is not 0
   const renderLabel = (props) => {
     const { x, y, value, index } = props;
     if (keyPoints.includes(index) && value !== 0) {
@@ -71,26 +71,26 @@ export default function GiniAddLinesDistributionChart({ selectedSemester }) {
   return (
     <div style={{ width: '100%', height: 540 }}>
       <div style={{ textAlign: 'center', fontSize: 22, fontWeight: 'bold', marginBottom: 8 }}>
-        各 Gini 区间（新增行）的 Group 数量分布
+                  Group Count Distribution by Gini Range (Added Lines)
       </div>
       <ResponsiveContainer width="100%" height={500}>
         <LineChart data={distributionData} margin={{ top: 20, right: 30, left: 20, bottom: 60 }}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
             dataKey="gini_range"
-            label={{ value: 'Gini 区间（新增行）', position: 'insideBottom', offset: -10, fill: '#000' }}
+            label={{ value: 'Gini Range (Added Lines)', position: 'insideBottom', offset: -10, fill: '#000' }}
             interval={0}
             angle={-45}
             textAnchor="end"
             height={70}
           />
           <YAxis
-            label={{ value: 'Group 数量', angle: -90, position: 'insideLeft', fill: '#000' }}
+            label={{ value: 'Group Count', angle: -90, position: 'insideLeft', fill: '#000' }}
             domain={yDomain}
             allowDataOverflow
             tickCount={Math.min(6, yDomain[1] + 1)}
           />
-          <Tooltip formatter={(value) => `${value} 个 Group`} labelFormatter={label => `区间: ${label}`} />
+                      <Tooltip formatter={(value) => `${value} Groups`} labelFormatter={label => `Range: ${label}`} />
           <Line
             type="monotone"
             dataKey="group_count"
@@ -103,8 +103,8 @@ export default function GiniAddLinesDistributionChart({ selectedSemester }) {
         </LineChart>
       </ResponsiveContainer>
       <div style={{ marginTop: 10, fontSize: 15, color: '#555', textAlign: 'center' }}>
-        说明：横轴为 Gini 区间（新增行），纵轴为每个区间内的 Group 数量。仅标注最大值。<br />
-        线条颜色为紫色，红色点为极值。
+                  Description: X-axis shows Gini ranges (Added Lines), Y-axis shows group count in each range. Only max values are labeled.<br />
+          Line color is purple, red dots indicate extreme values.
       </div>
     </div>
   );

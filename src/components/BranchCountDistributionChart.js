@@ -3,8 +3,6 @@ import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts';
 
-const BASE_URL = '/sustech-cs304';
-
 export default function BranchDistributionChart({ selectedSemester }) {
   const [distributionData, setDistributionData] = useState([]);
 
@@ -13,7 +11,7 @@ export default function BranchDistributionChart({ selectedSemester }) {
   }
 
   useEffect(() => {
-    const DATA_URL = `${BASE_URL}/chart_data.json`;
+    const DATA_URL = `/chart_data.json`;
     fetch(DATA_URL)
       .then(res => res.json())
       .then(json => {

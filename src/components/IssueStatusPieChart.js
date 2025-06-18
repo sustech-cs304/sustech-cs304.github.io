@@ -3,11 +3,9 @@ import {
   PieChart, Pie, Tooltip, Cell, ResponsiveContainer, Legend
 } from 'recharts';
 
-const BASE_URL = '/sustech-cs304';
-
 const STATUS_COLORS = {
-  open: '#8884d8',    // 紫色
-  closed: '#82ca9d',  // 绿色
+  open: '#8884d8',    // Purple
+  closed: '#82ca9d',  // Green
 };
 
 export default function IssueStatusPieChart({ selectedSemester }) {
@@ -18,7 +16,7 @@ export default function IssueStatusPieChart({ selectedSemester }) {
   }
 
   useEffect(() => {
-    const DATA_URL = `${BASE_URL}/chart_data.json`;
+    const DATA_URL = `/chart_data.json`;
     fetch(DATA_URL)
       .then(res => res.json())
       .then(json => {
@@ -31,7 +29,7 @@ export default function IssueStatusPieChart({ selectedSemester }) {
         setData(formattedData);
       })
       .catch(err => {
-        console.error('加载 issue 状态数据失败:', err);
+        console.error('Failed to load issue status data:', err);
         setData([]);
       });
   }, [selectedSemester]);
@@ -64,7 +62,7 @@ export default function IssueStatusPieChart({ selectedSemester }) {
               <Cell key={`cell-${index}`} fill={STATUS_COLORS[entry.name] || '#ccc'} />
             ))}
           </Pie>
-          <Tooltip formatter={(value) => `${value} 个`} />
+          <Tooltip formatter={(value) => `${value} items`} />
           <Legend />
         </PieChart>
       </ResponsiveContainer>

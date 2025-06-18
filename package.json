@@ -53,5 +53,12 @@
   },
   "engines": {
     "node": ">=18.0"
-  }
+  },
+  "description": "testest",
+  "main": "docusaurus.config.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "author": "",
+  "license": "ISC"
 }

@@ -3,8 +3,6 @@ import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts';
 
-const BASE_URL = '/sustech-cs304';
-
 function getSemesterKey(selectedSemester) {
   return selectedSemester.replace(/\s/g, '').toLowerCase();
 }
@@ -13,18 +11,18 @@ export default function CommitMessageLengthChart({ selectedSemester }) {
   const [distributionData, setDistributionData] = useState([]);
 
   useEffect(() => {
-    const DATA_URL = `${BASE_URL}/chart_data.json`;
+    const DATA_URL = `/chart_data.json`;
     fetch(DATA_URL)
       .then(res => res.json())
       .then(json => {
         const semesterKey = getSemesterKey(selectedSemester);
         const length_distribution = json[semesterKey]?.commit_message_info?.length_distribution || [];
-        // 每两个区间合并为一个
+        // Merge every two intervals into one
         const merged = [];
         for (let i = 0; i < length_distribution.length; i += 2) {
           const first = length_distribution[i];
           const second = length_distribution[i + 1];
-          // 取第一个区间的起始，第二个区间的结束
+          // Take the start of the first interval and the end of the second interval
           const start = first.length_range.split('–')[0];
           const end = second ? second.length_range.split('–')[1] : first.length_range.split('–')[1];
           const length_range = `${start}-${end}`;
@@ -34,7 +32,7 @@ export default function CommitMessageLengthChart({ selectedSemester }) {
         setDistributionData(merged);
       })
       .catch(err => {
-        console.error('加载 commit message length 分布数据失败:', err);
+        console.error('Failed to load commit message length distribution data:', err);
         setDistributionData([]);
       });
   }, [selectedSemester]);
@@ -46,7 +44,7 @@ export default function CommitMessageLengthChart({ selectedSemester }) {
     Math.floor(minY * 0.8) - 0.3,
     Math.ceil(maxY * 1.2)
   ];
-  // 找到最大值的index
+      // Find the index of the maximum value
   const maxIndex = distributionData.findIndex(d => d.count === maxY);
 
   return (

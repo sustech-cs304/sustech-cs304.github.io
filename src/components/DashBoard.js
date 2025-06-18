@@ -38,7 +38,7 @@ export default function Dashboard() {
         />
       </div>
 
-      {/* 单列卡片排列 */}
+      {/* Single column card layout */}
       <div className="charts-grid">
         <ChartCard 
           title="Daily Commit Distribution Over the Year"
@@ -198,7 +198,7 @@ function SemesterSelector({ value, onChange, options }) {
   );
 }
 
-// ChartCard组件：内部采用左右分栏布局，支持反转（左右错落）
+// ChartCard component: Internal left-right column layout, supports reversal (alternating left-right)
 function ChartCard({ title, children, reverse }) {
   return (
     <div className="chart-card">
@@ -209,7 +209,7 @@ function ChartCard({ title, children, reverse }) {
         <div className="chart-text">
           <h3>{title}</h3>
           <p>
-            {/* 此处可以根据需要添加对应图表的描述文本 */}
+            {/* Chart description text can be added here as needed */}
             Description for "{title}" goes here.
           </p>
         </div>

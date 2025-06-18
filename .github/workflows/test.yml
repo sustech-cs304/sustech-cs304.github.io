@@ -1,5 +1,5 @@
 name: Debug Trigger Test
-on: push # 这会匹配任何分支的任何推送
+on: push # This will match any push to any branch
 
 jobs:
   check:

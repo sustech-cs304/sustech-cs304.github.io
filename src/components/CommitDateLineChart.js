@@ -3,8 +3,6 @@ import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
 } from 'recharts';
 
-const BASE_URL = '/sustech-cs304';
-
 export default function CommitDateLineChart({ selectedSemester }) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -14,7 +12,7 @@ export default function CommitDateLineChart({ selectedSemester }) {
   }
 
   useEffect(() => {
-    const DATA_URL = `${BASE_URL}/chart_data.json`;
+    const DATA_URL = `/chart_data.json`;
     setLoading(true);
     fetch(DATA_URL)
       .then(res => res.json())
@@ -41,7 +39,7 @@ export default function CommitDateLineChart({ selectedSemester }) {
         setData(filtered);
       })
       .catch(err => {
-        console.error('数据加载失败:', err);
+        console.error('Failed to load data:', err);
         setData([]);
       })
       .finally(() => {
@@ -50,7 +48,7 @@ export default function CommitDateLineChart({ selectedSemester }) {
   }, [selectedSemester]);
 
   return (
-    // 将宽度设置为70%，并用 margin 居中
+    // Set width to 70% and center with margin
     <div style={{ width: '100%', height: 500, margin: '0 auto' }}>
       {loading ? (
         <div className="text-gray-500 text-sm">Loading...</div>

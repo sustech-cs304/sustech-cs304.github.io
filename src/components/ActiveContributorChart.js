@@ -3,8 +3,6 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts';
 
-const BASE_URL = '/sustech-cs304';
-
 function getSemesterKey(selectedSemester) {
   return selectedSemester.replace(/\s/g, '').toLowerCase();
 }
@@ -13,7 +11,7 @@ export default function ActiveContributorChart({ selectedSemester }) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const DATA_URL = `${BASE_URL}/chart_data.json`;
+    const DATA_URL = `/chart_data.json`;
     fetch(DATA_URL)
       .then(res => res.json())
       .then(json => {
@@ -28,7 +26,7 @@ export default function ActiveContributorChart({ selectedSemester }) {
         setData(sortedData);
       })
       .catch(err => {
-        console.error('加载活跃人数数据失败:', err);
+        console.error('Failed to load active contributor data:', err);
         setData([]);
       });
   }, [selectedSemester]);

@@ -3,9 +3,7 @@ import {
   PieChart, Pie, Tooltip, Cell, ResponsiveContainer, Legend
 } from 'recharts';
 
-const BASE_URL = '/sustech-cs304';
-
-const COLORS = ['#8884d8', '#82ca9d', '#ffc658']; // 中文 / 英文 / 混合
+const COLORS = ['#8884d8', '#82ca9d', '#ffc658']; // Chinese / English / Mixed
 
 export default function CommitMessageLanguageDistribution({ selectedSemester }) {
   const [data, setData] = useState([]);
@@ -15,7 +13,7 @@ export default function CommitMessageLanguageDistribution({ selectedSemester }) 
   }
 
   useEffect(() => {
-    const DATA_URL = `${BASE_URL}/chart_data.json`;
+    const DATA_URL = `/chart_data.json`;
     fetch(DATA_URL)
       .then(res => res.json())
       .then(json => {
@@ -34,7 +32,7 @@ export default function CommitMessageLanguageDistribution({ selectedSemester }) 
         setData(formatted);
       })
       .catch(err => {
-        console.error('加载语言分布数据失败:', err);
+        console.error('Failed to load language distribution data:', err);
         setData([]);
       });
   }, [selectedSemester]);

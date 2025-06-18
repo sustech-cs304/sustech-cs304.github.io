@@ -3,8 +3,6 @@ import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts';
 
-const BASE_URL = '/sustech-cs304';
-
 function getSemesterKey(selectedSemester) {
   return selectedSemester.replace(/\s/g, '').toLowerCase();
 }
@@ -13,7 +11,7 @@ export default function IssueDistributionChart({ selectedSemester }) {
   const [distributionData, setDistributionData] = useState([]);
 
   useEffect(() => {
-    const DATA_URL = `${BASE_URL}/chart_data.json`;
+    const DATA_URL = `/chart_data.json`;
     fetch(DATA_URL)
       .then(res => res.json())
       .then(json => {
@@ -36,18 +34,18 @@ export default function IssueDistributionChart({ selectedSemester }) {
         setDistributionData(chartData);
       })
       .catch(err => {
-        console.error('加载 issue 分布数据失败:', err);
+        console.error('Failed to load issue distribution data:', err);
         setDistributionData([]);
       });
   }, [selectedSemester]);
 
-  // 计算最大 y 值以添加 padding
+      // Calculate max y value to add padding
     const groupCounts = distributionData.map(d => d.group_count || 0);
     const maxY = Math.max(...groupCounts);
     const minY = Math.min(...groupCounts);
     const yDomain = [
-        Math.floor(minY * 0.8 - 1), // 下界扩大
-        Math.ceil(maxY * 1.2)   // 上界扩大
+              Math.floor(minY * 0.8 - 1), // Lower bound expanded
+      Math.ceil(maxY * 1.2)   // Upper bound expanded
     ];
 
   return (

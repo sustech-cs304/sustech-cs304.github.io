@@ -29,7 +29,7 @@ const config = {
   organizationName: 'sustech',
   trailingSlash: false,
 
-  favicon: '/img/校徽.ico',
+  favicon: '/img/sustech-logo.ico',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
@@ -95,7 +95,7 @@ const config = {
         title: 'SUSTech CS304',
         logo: {
           alt: 'My Site Logo',
-          src: 'img/校徽.png',
+          src: 'img/sustech-logo.png',
         },
         items: [
           {

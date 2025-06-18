@@ -19,7 +19,7 @@ name: Deploy Docusaurus site to GitHub Pages
 on:
   push:
     branches:
-      - main  # 你的网站源码所在的分支
+      - main  # The branch where your website source code is located
 
 
 

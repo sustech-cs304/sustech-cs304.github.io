@@ -3,7 +3,6 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine,
 } from 'recharts';
 
-const BASE_URL = '/sustech-cs304';
 const SEMESTERS = ['23 Spring', '24 Spring', '25 Spring'];
 
 function formatHourLabel(hour) {
@@ -12,15 +11,16 @@ function formatHourLabel(hour) {
   return `${pad(hour)}:00 - ${pad(nextHour)}:00`;
 }
 
-function getSemesterKey(selectedSemester) {
-  return selectedSemester.replace(/\s/g, '').toLowerCase();
-}
-
 export default function CommitHourBarChart({ selectedSemester }) {
   const [data, setData] = useState([]);
+  const [avgCommits, setAvgCommits] = useState(0);
+
+  function getSemesterKey(selectedSemester) {
+    return selectedSemester.replace(/\s/g, '').toLowerCase();
+  }
 
   useEffect(() => {
-    const DATA_URL = `${BASE_URL}/chart_data.json`;
+    const DATA_URL = `/chart_data.json`;
     fetch(DATA_URL)
       .then(res => res.json())
       .then(json => {
@@ -31,16 +31,14 @@ export default function CommitHourBarChart({ selectedSemester }) {
           commits: counts[idx] || 0,
         }));
         setData(formattedData);
+        setAvgCommits(formattedData.length > 0 ? formattedData.reduce((acc, item) => acc + item.commits, 0) / formattedData.length : 0);
       })
       .catch(err => {
-        console.error('加载 commit 小时数据失败:', err);
+        console.error('Failed to load commit hour data:', err);
         setData([]);
+        setAvgCommits(0);
       });
   }, [selectedSemester]);
-
-  const avgCommits = data.length > 0
-    ? data.reduce((acc, item) => acc + item.commits, 0) / data.length
-    : 0;
 
   return (
     <div style={{ width: '100%', height: 500 }}>
@@ -50,7 +48,7 @@ export default function CommitHourBarChart({ selectedSemester }) {
           <XAxis dataKey="hourLabel" angle={-45} textAnchor="end" height={80} />
           <YAxis />
           <Tooltip />
-          {/* <ReferenceLine y={avgCommits} stroke="red" strokeDasharray="3 3" label="平均" /> */}
+          {/* <ReferenceLine y={avgCommits} stroke="red" strokeDasharray="3 3" label="Average" /> */}
           <Bar dataKey="commits" fill="#8884d8" />
         </BarChart>
       </ResponsiveContainer>

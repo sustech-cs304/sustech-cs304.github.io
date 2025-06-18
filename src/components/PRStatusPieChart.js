@@ -3,8 +3,6 @@ import {
   PieChart, Pie, Tooltip, Cell, ResponsiveContainer, Legend
 } from 'recharts';
 
-const BASE_URL = '/sustech-cs304';
-
 const STATUS_COLORS = {
   merged: '#82ca9d',   // green
   closed: '#ff8042',   // orange
@@ -19,7 +17,7 @@ export default function PRStatusPieChart({ selectedSemester }) {
   }
 
   useEffect(() => {
-    const DATA_URL = `${BASE_URL}/chart_data.json`;
+    const DATA_URL = `/chart_data.json`;
     fetch(DATA_URL)
       .then(res => res.json())
       .then(json => {
@@ -32,7 +30,7 @@ export default function PRStatusPieChart({ selectedSemester }) {
         setData(formattedData);
       })
       .catch(err => {
-        console.error('加载 PR 状态数据失败:', err);
+        console.error('Failed to load PR status data:', err);
         setData([]);
       });
   }, [selectedSemester]);
@@ -65,7 +63,7 @@ export default function PRStatusPieChart({ selectedSemester }) {
               <Cell key={`cell-${index}`} fill={STATUS_COLORS[entry.name] || '#ccc'} />
             ))}
           </Pie>
-          <Tooltip formatter={(value) => `${value} 个`} />
+          <Tooltip formatter={(value) => `${value} items`} />
           <Legend />
         </PieChart>
       </ResponsiveContainer>

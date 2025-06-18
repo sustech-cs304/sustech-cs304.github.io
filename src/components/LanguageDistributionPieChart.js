@@ -3,10 +3,9 @@ import {
   PieChart, Pie, Tooltip, Cell, ResponsiveContainer, Legend
 } from 'recharts';
 
-const BASE_URL = '/sustech-cs304';
 const COLORS = [
   '#8884d8', '#8dd1e1', '#82ca9d', '#a4de6c', '#d0ed57',
-  '#ffc658', '#ff8042', '#d88884', '#a28df4', '#bbbbbb' // 最后一个为 Other 用灰色
+  '#ffc658', '#ff8042', '#d88884', '#a28df4', '#bbbbbb' // Last one for "Other" in gray
 ];
 const THRESHOLD_OTHER = 0.03;
 
@@ -18,7 +17,7 @@ export default function LanguageDistributionPieChart({ selectedSemester }) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const DATA_URL = `${BASE_URL}/chart_data.json`;
+    const DATA_URL = `/chart_data.json`;
     fetch(DATA_URL)
       .then(res => res.json())
       .then(json => {
@@ -45,7 +44,7 @@ export default function LanguageDistributionPieChart({ selectedSemester }) {
         setData(filtered);
       })
       .catch(err => {
-        console.error('加载语言分布数据失败:', err);
+        console.error('Failed to load language distribution data:', err);
         setData([]);
       });
   }, [selectedSemester]);

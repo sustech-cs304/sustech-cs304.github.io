@@ -3,8 +3,6 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine
 } from 'recharts';
 
-const BASE_URL = '/sustech-cs304';
-
 function getSemesterKey(selectedSemester) {
   return selectedSemester.replace(/\s/g, '').toLowerCase();
 }
@@ -14,7 +12,7 @@ export default function IssueCountPerRepoChart({ selectedSemester }) {
   const [avgIssue, setAvgIssue] = useState(0);
 
   useEffect(() => {
-    const DATA_URL = `${BASE_URL}/chart_data.json`;
+    const DATA_URL = `/chart_data.json`;
     fetch(DATA_URL)
       .then(res => res.json())
       .then(json => {
@@ -30,7 +28,7 @@ export default function IssueCountPerRepoChart({ selectedSemester }) {
         setAvgIssue(averageIssues);
       })
       .catch(err => {
-        console.error('加载 issue 数据失败:', err);
+        console.error('Failed to load issue data:', err);
         setData([]);
         setAvgIssue(0);
       });

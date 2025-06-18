@@ -3,8 +3,6 @@ import {
   PieChart, Pie, Tooltip, Cell, ResponsiveContainer, Legend
 } from 'recharts';
 
-const BASE_URL = '/sustech-cs304';
-
 const COLORS = [
   '#8884d8', '#82ca9d', '#ffc658', '#ff8042', '#8dd1e1',
   '#a4de6c', '#d0ed57', '#d88884', '#a28df4', '#bbbbbb',
@@ -19,7 +17,7 @@ export default function ActiveContributorPieChart({ selectedSemester }) {
   }
 
   useEffect(() => {
-    const DATA_URL = `${BASE_URL}/chart_data.json`;
+    const DATA_URL = `/chart_data.json`;
     fetch(DATA_URL)
       .then(res => res.json())
       .then(json => {
@@ -32,7 +30,7 @@ export default function ActiveContributorPieChart({ selectedSemester }) {
         setData(formatted);
       })
       .catch(err => {
-        console.error('加载活跃贡献者饼图数据失败:', err);
+        console.error('Failed to load active contributor pie chart data:', err);
         setData([]);
       });
   }, [selectedSemester]);
@@ -65,7 +63,7 @@ export default function ActiveContributorPieChart({ selectedSemester }) {
               <Cell key={`cell-${idx}`} fill={COLORS[idx % COLORS.length]} />
             ))}
           </Pie>
-          <Tooltip formatter={(value) => `${value} 个项目`} />
+          <Tooltip formatter={(value) => `${value} projects`} />
           <Legend />
         </PieChart>
       </ResponsiveContainer>

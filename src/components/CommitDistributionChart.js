@@ -3,8 +3,6 @@ import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts';
 
-const BASE_URL = '/sustech-cs304';
-
 function getSemesterKey(selectedSemester) {
   return selectedSemester.replace(/\s/g, '').toLowerCase();
 }
@@ -14,7 +12,7 @@ export default function CommitDistributionChart({ selectedSemester }) {
   const [keyPoints, setKeyPoints] = useState([]);
 
   useEffect(() => {
-    const DATA_URL = `${BASE_URL}/chart_data.json`;
+    const DATA_URL = `/chart_data.json`;
     fetch(DATA_URL)
       .then(res => res.json())
       .then(json => {
@@ -44,7 +42,7 @@ export default function CommitDistributionChart({ selectedSemester }) {
         setKeyPoints([maxIdx, minIdx]);
       })
       .catch(err => {
-        console.error('加载 commit 分布数据失败:', err);
+        console.error('Failed to load commit distribution data:', err);
         setDistributionData([]);
         setKeyPoints([]);
       });
@@ -75,26 +73,26 @@ export default function CommitDistributionChart({ selectedSemester }) {
   return (
     <div style={{ width: '100%', height: 540 }}>
       <div style={{ textAlign: 'center', fontSize: 22, fontWeight: 'bold', marginBottom: 8 }}>
-        各 Commit Count 区间的 Group 数量分布
+                  Group Count Distribution by Commit Count Range
       </div>
       <ResponsiveContainer width="100%" height={500}>
         <LineChart data={distributionData} margin={{ top: 20, right: 30, left: 20, bottom: 60 }}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
             dataKey="commit_range"
-            label={{ value: 'Commit Count 区间', position: 'insideBottom', offset: -10, fill: '#000' }}
+            label={{ value: 'Commit Count Range', position: 'insideBottom', offset: -10, fill: '#000' }}
             interval={0}
             angle={-45}
             textAnchor="end"
             height={70}
           />
           <YAxis
-            label={{ value: 'Group 数量', angle: -90, position: 'insideLeft', fill: '#000' }}
+            label={{ value: 'Group Count', angle: -90, position: 'insideLeft', fill: '#000' }}
             domain={yDomain}
             allowDataOverflow
             tickCount={Math.min(6, yDomain[1] + 1)}
           />
-          <Tooltip formatter={(value) => `${value} 个 Group`} labelFormatter={label => `区间: ${label}`} />
+                      <Tooltip formatter={(value) => `${value} Groups`} labelFormatter={label => `Range: ${label}`} />
           <Line
             type="monotone"
             dataKey="group_count"
@@ -107,8 +105,8 @@ export default function CommitDistributionChart({ selectedSemester }) {
         </LineChart>
       </ResponsiveContainer>
       <div style={{ marginTop: 10, fontSize: 15, color: '#555', textAlign: 'center' }}>
-        说明：横轴为 Commit 数量区间，纵轴为每个区间内的 Group 数量。仅标注最大/最小值。<br />
-        线条颜色为紫色，红色点为极值。
+                  Description: X-axis shows commit count ranges, Y-axis shows group count in each range. Only max/min values are labeled.<br />
+          Line color is purple, red dots indicate extreme values.
       </div>
     </div>
   );
