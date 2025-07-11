@@ -27,3 +27,4 @@ yarn-error.log*
 /intro.md
 
 .cursorignore
+.vscode

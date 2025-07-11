@@ -1,33 +1,17 @@
-1. enter repos folder: `cd ./repos`
-2. clone semestar repos:
+1. create repos folder and enter it: `mkdir ./repos && cd ./repos; `
+2. clone semestar repos (make sure you have [github-cli](https://github.com/cli/cli) and gh extention github/gh-classroom installed):
     * 25 Spring: `gh classroom clone student-repos -a 749620`
     * 24 Spring: `gh classroom clone student-repos -a 558214`
     * 23 Spring: `gh classroom clone student-repos -a 403123`
     * ......
-    OR pull new commits:
+    OR pull new commits (if semestar repos already exist):
     * 25 Spring: `gh classroom pull student-repos -a 749620`
     * 24 Spring: `gh classroom pull student-repos -a 558214`
     * 23 Spring: `gh classroom pull student-repos -a 403123`
+``
 3. Rename special semestar: `mv ./team-project-submissions ./team-project-23spring-submissions`
-4. back to main folder: `cd ..`
-1. gather all classroom members: `python .\script\gather_classroom_member_info.py`
-5. gather data from local repos (Obtain commit data and line status data): `python .\scripts\gather_data_from_local_repos.py`
-6. filter: `python .\scripts\remove_outside_commit_author.py`
-7. gather data from remote repos (PR and Merge data):
-   * set github token: `$env:GITHUB_TOKEN = "YOUR GITHUB TOKEN"`
-   * gather pr data: `python .\scripts\gather_pr_from_remote_repos.py`
-   * gather issue data: `python .\scripts\gather_issue_from_remote_repos.py`
-8. prepare data to draw charts: `python .\scripts\generate_graph_data.py`
 
-METAINFO:
-
-Classroom names and ids:
-
-* sustech-cs304-classroom-23spring: 152718
-* 24spring: 206118
-* sustech-cs304-25Spring: 253851
-
-Assignment names and ids:
-23spring Team project: 403123
-24spring Team project: 558214
-25spring Team project: 749620
+4. prepare `.env` file: `cp .env.example .env`, and then replace GITHUB_TOKEN as your own github [personal-access-token](https://github.com/settings/personal-access-tokens/) (make sure it has permission to access "sustech-cs304" organization);
+5. back to `classroom-repos` folder: `cd ..`
+6. RUN!!! `python github_classroom_spider.py`  
+7. If success, we can get `chart_data.json`, move it to ../static and all done.
