@@ -22,7 +22,7 @@ function HomepageHeader() {
           <Heading as="h1" className="hero__title">
             {siteConfig.title}
           </Heading>
-          <p className="hero__subtitle">Software Engineering Course at SUSTech</p>
+          <p className="hero__subtitle">Southern University of Science and Technology (SUSTech)</p>
           <div className={styles.heroButtons}>
             <Link
               className={styles.heroButton}
