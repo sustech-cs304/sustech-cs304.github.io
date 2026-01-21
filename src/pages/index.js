@@ -57,20 +57,20 @@ export default function Home() {
         <div className={styles.mainContainer}>
           <div className={styles.features}>
             <div className={styles.feature}>
-              <h3>👨‍💻 Team Development</h3>
-              <p>Experience real-world software development through team projects. Learn to collaborate, manage repositories, and build robust applications.</p>
+              <h3>👨‍💻 Team Collaboration</h3>
+              <p>Great software is built by people working in harmony with smart tools. Learn to coordinate roles, manage project timelines, and lead your team to turn a shared vision into a reality.</p>
             </div>
             <div className={styles.feature}>
               <h3>🌐 Open Source Contribution</h3>
-              <p>Make meaningful contributions to open source projects. Learn to write quality code, submit PRs, and engage with the open source community.</p>
+              <p>Move beyond the classroom. Submit your first PRs to real-world projects and leave your mark on the global open-source community.</p>
             </div>
             <div className={styles.feature}>
-              <h3>📊 Project Analytics</h3>
-              <p>Track project progress with detailed analytics. Monitor commits, PRs, and team collaboration patterns to improve development efficiency.</p>
+              <h3>📊 The Pulse of CS304</h3>
+              <p>See the course in motion! Follow the collective activity of all teams through live analytics, tracking every commit and contribution as we build the semester together.</p>
             </div>
           </div>
           <div className={styles.dashboardSection}>
-            <h2 className={styles.sectionTitle}>Project Analytics Dashboard</h2>
+            <h2 className={styles.sectionTitle}>The Pulse of CS304</h2>
             <p className={styles.sectionDescription}>
               Explore detailed analytics of past semester projects, including commit patterns, 
               contribution distributions, and team collaboration metrics.
