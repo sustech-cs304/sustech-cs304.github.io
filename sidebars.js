@@ -25,11 +25,8 @@ const sidebars = {
       type: 'category',
       label: 'Past',
       items: [
-        'projects/past-requirements/24 Fall', 
         'projects/past-requirements/24 Spring', 
-        'projects/past-requirements/23 Fall', 
         'projects/past-requirements/23 Spring', 
-        'projects/past-requirements/22 Fall'
       ],
     },
   ],
