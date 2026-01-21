@@ -12,8 +12,8 @@ import rehypeKatex from 'rehype-katex';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'SUSTech CS304',
-  tagline: 'Dinosaurs are cool',
+  title: 'CS304: Software Engineering',
+  tagline: 'SE is cool',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
