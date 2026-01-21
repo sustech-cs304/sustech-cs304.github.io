@@ -39,167 +39,168 @@ export default function Dashboard() {
       </div>
 
       {/* Single column card layout */}
-<div className="charts-grid">
-  <ChartCard
-    title="Daily Commit Distribution Over the Year"
-    description="Daily commits across the year; spikes line up with sprint deadlines and releases."
-    reverse={false}
-  >
-    <CommitDateLineChart selectedSemester={selectedSemester} />
-  </ChartCard>
-
-  <ChartCard
-    title="Hourly Commit Distribution"
-    description="Commit volume by hour of day to see when teams are most active."
-    reverse={true}
-  >
-    <CommitHourBarChart selectedSemester={selectedSemester} />
-  </ChartCard>
-
-  <ChartCard
-    title="Commit Count per Repo"
-    description="Total commits per repository to compare team activity."
-    reverse={false}
-  >
-    <CommitCountPerRepoChart selectedSemester={selectedSemester} />
-  </ChartCard>
-
-  <ChartCard
-    title="Commit Distribution"
-    description="Distribution of commits to spot uneven contributions or bursty work."
-    reverse={true}
-  >
-    <CommitDistributionChart selectedSemester={selectedSemester} />
-  </ChartCard>
-
-  <ChartCard
-    title="Gini Commit Distribution"
-    description="Gini coefficient on commits; higher means more uneven contributions."
-    reverse={false}
-  >
-    <GiniCommitDistributionChart selectedSemester={selectedSemester} />
-  </ChartCard>
-
-  <ChartCard
-    title="Gini Change Lines Distribution"
-    description="Gini on changed lines to see who is making the larger edits."
-    reverse={true}
-  >
-    <GiniChangeLinesDistributionChart selectedSemester={selectedSemester} />
-  </ChartCard>
-
-  <ChartCard
-    title="Commit Message Language Distribution"
-    description="Language breakdown of commit messages."
-    reverse={false}
-  >
-    <CommitMessageLanguageDistribution selectedSemester={selectedSemester} />
-  </ChartCard>
-
-  <ChartCard
-    title="Commit Message Length Distribution"
-    description="Typical commit message length; shorter can hint at low-quality messages."
-    reverse={true}
-  >
-    <CommitMessageLengthChart selectedSemester={selectedSemester} />
-  </ChartCard>
-
-  <ChartCard
-    title="Code Line Count per Repo"
-    description="Lines of code per repository."
-    reverse={false}
-  >
-    <CodeLineCountChart selectedSemester={selectedSemester} />
-  </ChartCard>
-
-  <ChartCard
-    title="Programming Language Distribution"
-    description="Language mix across the codebase."
-    reverse={true}
-  >
-    <LanguageDistributionPieChart selectedSemester={selectedSemester} />
-  </ChartCard>
-
-  <ChartCard
-    title="PR Count per Repo"
-    description="Pull requests opened per repository."
-    reverse={false}
-  >
-    <PRCountPerRepoChart selectedSemester={selectedSemester} />
-  </ChartCard>
-
-  <ChartCard
-    title="PR Merge Status"
-    description="Merge vs open PRs to track throughput."
-    reverse={true}
-  >
-    <PRStatusPieChart selectedSemester={selectedSemester} />
-  </ChartCard>
-
-  <ChartCard
-    title="PR Distribution"
-    description="Distribution of PR counts to find outliers."
-    reverse={false}
-  >
-    <PRDistributionChart selectedSemester={selectedSemester} />
-  </ChartCard>
-
-  <ChartCard
-    title="Issue Count per Repo"
-    description="Open issues per repository."
-    reverse={true}
-  >
-    <IssueCountPerRepoChart selectedSemester={selectedSemester} />
-  </ChartCard>
-
-  <ChartCard
-    title="Issue Distribution"
-    description="Issue distribution across projects."
-    reverse={false}
-  >
-    <IssueDistributionChart selectedSemester={selectedSemester} />
-  </ChartCard>
-
-  <ChartCard
-    title="Issue Closed Status"
-    description="Closed vs open issues to gauge resolution rate."
-    reverse={true}
-  >
-    <IssueStatusPieChart selectedSemester={selectedSemester} />
-  </ChartCard>
-
-  <ChartCard
-    title="Branch Count per Repo"
-    description="How many branches each repo maintains."
-    reverse={false}
-  >
-    <BranchCountPerRepoChart selectedSemester={selectedSemester} />
-  </ChartCard>
-
-  <ChartCard
-    title="Branch Count Distribution"
-    description="Distribution of branch counts; high counts can indicate experimentation."
-    reverse={true}
-  >
-    <BranchCountDistributionChart selectedSemester={selectedSemester} />
-  </ChartCard>
-
-  <ChartCard
-    title="Active Contributors per Project"
-    description="Number of active contributors on each project."
-    reverse={false}
-  >
-    <ActiveContributorChart selectedSemester={selectedSemester} />
-  </ChartCard>
-
-  <ChartCard
-    title="Active Contributor Distribution"
-    description="Distribution of contributor counts across projects."
-    reverse={true}
-  >
-    <ActiveContributorPieChart selectedSemester={selectedSemester} />
-  </ChartCard>
-</div>
+    <div className="charts-grid">
+      <ChartCard
+        title="Daily Commit Distribution Over the Year"
+        description="Daily commits across the year; spikes line up with sprint deadlines and releases."
+        reverse={false}
+      >
+        <CommitDateLineChart selectedSemester={selectedSemester} />
+      </ChartCard>
+    
+      <ChartCard
+        title="Hourly Commit Distribution"
+        description="Commit volume by hour of day to see when teams are most active."
+        reverse={true}
+      >
+        <CommitHourBarChart selectedSemester={selectedSemester} />
+      </ChartCard>
+    
+      <ChartCard
+        title="Commit Count per Repo"
+        description="Total commits per repository to compare team activity."
+        reverse={false}
+      >
+        <CommitCountPerRepoChart selectedSemester={selectedSemester} />
+      </ChartCard>
+    
+      <ChartCard
+        title="Commit Distribution"
+        description="Distribution of commits to spot uneven contributions or bursty work."
+        reverse={true}
+      >
+        <CommitDistributionChart selectedSemester={selectedSemester} />
+      </ChartCard>
+    
+      <ChartCard
+        title="Gini Commit Distribution"
+        description="Gini coefficient on commits; higher means more uneven contributions."
+        reverse={false}
+      >
+        <GiniCommitDistributionChart selectedSemester={selectedSemester} />
+      </ChartCard>
+    
+      <ChartCard
+        title="Gini Change Lines Distribution"
+        description="Gini on changed lines to see who is making the larger edits."
+        reverse={true}
+      >
+        <GiniChangeLinesDistributionChart selectedSemester={selectedSemester} />
+      </ChartCard>
+    
+      <ChartCard
+        title="Commit Message Language Distribution"
+        description="Language breakdown of commit messages."
+        reverse={false}
+      >
+        <CommitMessageLanguageDistribution selectedSemester={selectedSemester} />
+      </ChartCard>
+    
+      <ChartCard
+        title="Commit Message Length Distribution"
+        description="Typical commit message length; shorter can hint at low-quality messages."
+        reverse={true}
+      >
+        <CommitMessageLengthChart selectedSemester={selectedSemester} />
+      </ChartCard>
+    
+      <ChartCard
+        title="Code Line Count per Repo"
+        description="Lines of code per repository."
+        reverse={false}
+      >
+        <CodeLineCountChart selectedSemester={selectedSemester} />
+      </ChartCard>
+    
+      <ChartCard
+        title="Programming Language Distribution"
+        description="Language mix across the codebase."
+        reverse={true}
+      >
+        <LanguageDistributionPieChart selectedSemester={selectedSemester} />
+      </ChartCard>
+    
+      <ChartCard
+        title="PR Count per Repo"
+        description="Pull requests opened per repository."
+        reverse={false}
+      >
+        <PRCountPerRepoChart selectedSemester={selectedSemester} />
+      </ChartCard>
+    
+      <ChartCard
+        title="PR Merge Status"
+        description="Merge vs open PRs to track throughput."
+        reverse={true}
+      >
+        <PRStatusPieChart selectedSemester={selectedSemester} />
+      </ChartCard>
+    
+      <ChartCard
+        title="PR Distribution"
+        description="Distribution of PR counts to find outliers."
+        reverse={false}
+      >
+        <PRDistributionChart selectedSemester={selectedSemester} />
+      </ChartCard>
+    
+      <ChartCard
+        title="Issue Count per Repo"
+        description="Open issues per repository."
+        reverse={true}
+      >
+        <IssueCountPerRepoChart selectedSemester={selectedSemester} />
+      </ChartCard>
+    
+      <ChartCard
+        title="Issue Distribution"
+        description="Issue distribution across projects."
+        reverse={false}
+      >
+        <IssueDistributionChart selectedSemester={selectedSemester} />
+      </ChartCard>
+    
+      <ChartCard
+        title="Issue Closed Status"
+        description="Closed vs open issues to gauge resolution rate."
+        reverse={true}
+      >
+        <IssueStatusPieChart selectedSemester={selectedSemester} />
+      </ChartCard>
+    
+      <ChartCard
+        title="Branch Count per Repo"
+        description="How many branches each repo maintains."
+        reverse={false}
+      >
+        <BranchCountPerRepoChart selectedSemester={selectedSemester} />
+      </ChartCard>
+    
+      <ChartCard
+        title="Branch Count Distribution"
+        description="Distribution of branch counts; high counts can indicate experimentation."
+        reverse={true}
+      >
+        <BranchCountDistributionChart selectedSemester={selectedSemester} />
+      </ChartCard>
+    
+      <ChartCard
+        title="Active Contributors per Project"
+        description="Number of active contributors on each project."
+        reverse={false}
+      >
+        <ActiveContributorChart selectedSemester={selectedSemester} />
+      </ChartCard>
+    
+      <ChartCard
+        title="Active Contributor Distribution"
+        description="Distribution of contributor counts across projects."
+        reverse={true}
+      >
+        <ActiveContributorPieChart selectedSemester={selectedSemester} />
+      </ChartCard>
+    </div>
+          </div>
   );
 }
 
