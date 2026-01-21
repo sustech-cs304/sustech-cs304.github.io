@@ -6,10 +6,6 @@ sidebar_position: 1
 
 # [CS304] Team Project for 25 Spring 
 
-Total score: 35
-
-Max bonus: +2 (i.e., max total: 37).
-
 A major component of this course is a software development project in team efforts. Your team will propose, design, develop, and maintain a practical and production-level software product.
 
 ## Project List
@@ -103,7 +99,7 @@ The bonus points varies by project：
 －Coursework Grading System $-\star+1$ Bonus
 －Intelligent Course－Aware IDE
 －SUSTech Car Racing Game－$\boldsymbol{*}_{\boldsymbol{*}}+2$ Bonus
-To quantify for the bonus，your project must reach a sufficient level of maturity．A half－finished or poorly implemented project will not be eligible for bonus．
+To quantify for the bonus, your project must reach a sufficient level of maturity．A half－finished or poorly implemented project will not be eligible for bonus．
 
 ## Basic Requirements
 
