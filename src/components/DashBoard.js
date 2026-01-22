@@ -72,37 +72,37 @@ export default function Dashboard() {
       //   <CommitDistributionChart selectedSemester={selectedSemester} />
       // </ChartCard>
     
-      <ChartCard
-        title="Gini Commit Distribution"
-        description="Gini coefficient on commits; higher means more uneven contributions."
-        reverse={false}
-      >
-        <GiniCommitDistributionChart selectedSemester={selectedSemester} />
-      </ChartCard>
+      // <ChartCard
+      //   title="Gini Commit Distribution"
+      //   description="Gini coefficient on commits; higher means more uneven contributions."
+      //   reverse={false}
+      // >
+      //   <GiniCommitDistributionChart selectedSemester={selectedSemester} />
+      // </ChartCard>
     
-      <ChartCard
-        title="Gini Change Lines Distribution"
-        description="Gini on changed lines to see who is making the larger edits."
-        reverse={true}
-      >
-        <GiniChangeLinesDistributionChart selectedSemester={selectedSemester} />
-      </ChartCard>
+      // <ChartCard
+      //   title="Gini Change Lines Distribution"
+      //   description="Gini on changed lines to see who is making the larger edits."
+      //   reverse={true}
+      // >
+      //   <GiniChangeLinesDistributionChart selectedSemester={selectedSemester} />
+      // </ChartCard>
     
-      <ChartCard
-        title="Commit Message Language Distribution"
-        description="Language breakdown of commit messages."
-        reverse={false}
-      >
-        <CommitMessageLanguageDistribution selectedSemester={selectedSemester} />
-      </ChartCard>
+      // <ChartCard
+      //   title="Commit Message Language Distribution"
+      //   description="Language breakdown of commit messages."
+      //   reverse={false}
+      // >
+      //   <CommitMessageLanguageDistribution selectedSemester={selectedSemester} />
+      // </ChartCard>
     
-      <ChartCard
-        title="Commit Message Length Distribution"
-        description="Typical commit message length; shorter can hint at low-quality messages."
-        reverse={true}
-      >
-        <CommitMessageLengthChart selectedSemester={selectedSemester} />
-      </ChartCard>
+      // <ChartCard
+      //   title="Commit Message Length Distribution"
+      //   description="Typical commit message length; shorter can hint at low-quality messages."
+      //   reverse={true}
+      // >
+      //   <CommitMessageLengthChart selectedSemester={selectedSemester} />
+      // </ChartCard>
     
       <ChartCard
         title="Code Line Count per Repo"
