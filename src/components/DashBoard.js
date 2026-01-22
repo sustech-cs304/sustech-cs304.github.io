@@ -41,16 +41,16 @@ export default function Dashboard() {
       {/* Single column card layout */}
     <div className="charts-grid">
       <ChartCard
-        title="Daily Commit Distribution Over the Year"
-        description="Daily commits across the year; spikes line up with sprint deadlines and releases."
+        title="Daily Commit"
+        description="Watch the spikes and waves as every team collaborates to hit deadlines and bring ideas to life. Each peak is a moment of pure creativity (and maybe a little last-minute coffee)."
         reverse={false}
       >
         <CommitDateLineChart selectedSemester={selectedSemester} />
       </ChartCard>
     
       <ChartCard
-        title="Hourly Commit Distribution"
-        description="Commit volume by hour of day to see when teams are most active."
+        title="Hourly Commit"
+        description="The 24/7 rhythm of our course. Whether you're a morning person or a midnight coder, someone at SUSTech is always building!"
         reverse={true}
       >
         <CommitHourBarChart selectedSemester={selectedSemester} />
@@ -58,19 +58,19 @@ export default function Dashboard() {
     
       <ChartCard
         title="Commit Count per Repo"
-        description="Total commits per repository to compare team activity."
+        description="Look at all those commits! Is your team leading the pack, or are you the dark horse waiting to make a late-night surge?"
         reverse={false}
       >
         <CommitCountPerRepoChart selectedSemester={selectedSemester} />
       </ChartCard>
     
-      <ChartCard
-        title="Commit Distribution"
-        description="Distribution of commits to spot uneven contributions or bursty work."
-        reverse={true}
-      >
-        <CommitDistributionChart selectedSemester={selectedSemester} />
-      </ChartCard>
+      // <ChartCard
+      //   title="Commit Distribution"
+      //   description="Distribution of commits to spot uneven contributions or bursty work."
+      //   reverse={true}
+      // >
+      //   <CommitDistributionChart selectedSemester={selectedSemester} />
+      // </ChartCard>
     
       <ChartCard
         title="Gini Commit Distribution"
