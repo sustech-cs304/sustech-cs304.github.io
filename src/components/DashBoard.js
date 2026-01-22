@@ -129,15 +129,26 @@ export default function Dashboard() {
       >
         <IssueCountPerRepoChart selectedSemester={selectedSemester} />
       </ChartCard>
+
+
+      <ChartCard
+        title="Branch Count per Team"
+        description={`Branches are where the real experimentation happens! Dive in, branch out, and don't be afraid to break things in your own space!`}
+        reverse={false}
+      >
+        <BranchCountPerRepoChart selectedSemester={selectedSemester} />
+      </ChartCard>
   
       <ChartCard
-        title="PR Count per Repo"
-        description="Pull requests opened per repository."
+        title="PR Count per Team"
+        description={`Every Pull Request is a "handshake" between teammates: a moment to step back, learn from each other, and collaborate before the final merge. How many handshakes has your team exchanged lately?`}
         reverse={false}
       >
         <PRCountPerRepoChart selectedSemester={selectedSemester} />
       </ChartCard>
-    
+
+
+        {/*  
       <ChartCard
         title="PR Merge Status"
         description="Merge vs open PRs to track throughput."
@@ -155,7 +166,7 @@ export default function Dashboard() {
       </ChartCard>
     
 
-  {/*    
+  
       <ChartCard
         title="Issue Distribution"
         description="Issue distribution across projects."
@@ -171,23 +182,18 @@ export default function Dashboard() {
       >
         <IssueStatusPieChart selectedSemester={selectedSemester} />
       </ChartCard>
-          */}
+
     
-      <ChartCard
-        title="Branch Count per Repo"
-        description="How many branches each repo maintains."
-        reverse={false}
-      >
-        <BranchCountPerRepoChart selectedSemester={selectedSemester} />
-      </ChartCard>
-    
+
+
       <ChartCard
         title="Branch Count Distribution"
         description="Distribution of branch counts; high counts can indicate experimentation."
         reverse={true}
       >
         <BranchCountDistributionChart selectedSemester={selectedSemester} />
-      </ChartCard>
+      </ChartCard> 
+      
     
       <ChartCard
         title="Active Contributors per Project"
@@ -203,7 +209,7 @@ export default function Dashboard() {
         reverse={true}
       >
         <ActiveContributorPieChart selectedSemester={selectedSemester} />
-      </ChartCard>
+      </ChartCard> */}
     </div>
           </div>
   );
