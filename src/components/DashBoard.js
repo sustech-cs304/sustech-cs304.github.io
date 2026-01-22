@@ -124,7 +124,7 @@ export default function Dashboard() {
 
       <ChartCard
         title="Issue Count per Team"
-        description="From \"it's not a bug, it's a feature\" to \"mission accomplished!\" This is the record of our collective battle against the backlog. How many \"Done\" columns did your team fill today?"
+        description={`From "it's not a bug, it's a feature" to "mission accomplished!" This is the record of our collective battle against the backlog. How many "Done" columns did your team fill today?`}
         reverse={true}
       >
         <IssueCountPerRepoChart selectedSemester={selectedSemester} />
