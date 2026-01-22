@@ -57,7 +57,7 @@ export default function Dashboard() {
       </ChartCard>
     
       <ChartCard
-        title="Commit Count per Repo"
+        title="Commit Count per Team"
         description="Look at all those commits! Is your team leading the pack, or are you the dark horse waiting to make a late-night surge?"
         reverse={false}
       >
@@ -121,7 +121,15 @@ export default function Dashboard() {
         <LanguageDistributionPieChart selectedSemester={selectedSemester} />
       </ChartCard>
       */}
-    
+
+      <ChartCard
+        title="Issue Count per Team"
+        description="From \"it's not a bug, it's a feature\" to \"mission accomplished!\" This is the record of our collective battle against the backlog. How many \"Done\" columns did your team fill today?"
+        reverse={true}
+      >
+        <IssueCountPerRepoChart selectedSemester={selectedSemester} />
+      </ChartCard>
+  
       <ChartCard
         title="PR Count per Repo"
         description="Pull requests opened per repository."
@@ -146,14 +154,8 @@ export default function Dashboard() {
         <PRDistributionChart selectedSemester={selectedSemester} />
       </ChartCard>
     
-      <ChartCard
-        title="Issue Count per Repo"
-        description="Open issues per repository."
-        reverse={true}
-      >
-        <IssueCountPerRepoChart selectedSemester={selectedSemester} />
-      </ChartCard>
-    
+
+  {/*    
       <ChartCard
         title="Issue Distribution"
         description="Issue distribution across projects."
@@ -169,6 +171,7 @@ export default function Dashboard() {
       >
         <IssueStatusPieChart selectedSemester={selectedSemester} />
       </ChartCard>
+          */}
     
       <ChartCard
         title="Branch Count per Repo"
