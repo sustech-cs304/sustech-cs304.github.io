@@ -1,4 +1,10 @@
-# [CS304] Team Project for 25 Spring
+---
+displayed_sidebar: projectSidebar
+sidebar_label: '25 Spring'
+sidebar_position: 1
+---
+
+## [CS304] Team Project for 25 Spring
 
 A major component of this course is a software development project in team efforts.
 Your team will propose, design, develop, and maintain a practical and production-level
