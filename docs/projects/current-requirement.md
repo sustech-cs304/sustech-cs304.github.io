@@ -4,19 +4,18 @@ sidebar_label: '25 Spring'
 sidebar_position: 1
 ---
 
-# [CS304] Team Project
+# Team Project
 
 A major component of this course is a software development project in team efforts.
 Your team will propose, design, develop, and maintain a practical and production-level
 software product.
 
-## Project List
 The team project should have the students, faculties, and/or staffs of SUSTech as the potential target users.
 The project's objective should focus on enhancing the efficiency and productivity in users' daily work, study, and/or related activities.
 
 Here are a list of suggested projects.
 
-**1. Personal Health Assistant**
+## Personal Health Assistant
 
 Maintaining a healthy lifestyle involves regular exercise, proper training, and 
 consistent tracking of physical progress. However, many people struggle with managing their 
@@ -37,7 +36,7 @@ platform, with availability based on their preferred gym or training center.
 * **Social Sharing & Billboard**: Users can share their achievements, training milestones, or workout tips with friends, and view a leaderboard showcasing their friends' progress.
 
 
-**2. Smart Photo Album**
+## Smart Photo Album
 
 With the increasing number of photos people capture daily,
 managing and organizing these images can become overwhelming.
@@ -59,7 +58,7 @@ Here are some directions you may explore:
 
 
 
-**3. Coursework Grading System**
+## Coursework Grading System
 
 CS students use Blackboard (BB) for text and image-based assignments
 submission, Online Judge (OJ) for code submissions,
@@ -85,8 +84,7 @@ Here are some directions you may explore:
 * **User Experience Improvements**: Focus on intuitive UI, real-time feedback on submissions, and seamless integration with university systems.
 
 
-
-**4. Intelligent Course-Aware IDE**
+## Intelligent Course-Aware IDE
 
 Traditional coding environments focus primarily on programming tasks, requiring students to switch between multiple tools for lecture notes, assignments, and discussions. This fragmented approach disrupts the learning process, making it difficult to connect theoretical concepts with practical coding exercises. Additionally, students often struggle with organizing course materials, revisiting key concepts, and efficiently reviewing content.
 
@@ -109,7 +107,7 @@ Here are some directions you may explore:
 
 
 
-**5. SUSTech Car Racing Game**
+## SUSTech Car Racing Game
 
 Every fall, SUSTech welcomes new students, and freshmen often need some time to become familiar with the campus and their new environment. Navigating through the vast campus can be a challenge, especially when adjusting to new schedules and locations.
 
