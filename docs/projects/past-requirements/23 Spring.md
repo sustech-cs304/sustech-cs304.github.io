@@ -4,7 +4,7 @@ sidebar_label: '23 Spring'
 sidebar_position: 1
 ---
 
-# [CS304] Team Project for 23 Spring
+## [CS304] Team Project for 23 Spring
 
 A major component of this course is a software development project in team efforts. 
 Your team will propose, design, develop, and evaluate a practical and production-level
