@@ -63,9 +63,6 @@ const sidebars = {
 
   mergedPRsSidebar: [
     'merged-prs/25S',
-    'merged-prs/24F',
-    'merged-prs/24S',
-    'merged-prs/23F',
   ],
 };
 
