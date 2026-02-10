@@ -98,12 +98,12 @@ const config = {
           src: 'img/sustech-logo.png',
         },
         items: [
-          {
-            type: 'docSidebar',
-            sidebarId: 'projectSidebar',
-            position: 'left',
-            label: 'Projects',
-          },
+          // {
+          //   type: 'docSidebar',
+          //   sidebarId: 'projectSidebar',
+          //   position: 'left',
+          //   label: 'Projects',
+          // },
           {
             type: 'docSidebar',
             sidebarId: 'outstandingProjectsSidebar',

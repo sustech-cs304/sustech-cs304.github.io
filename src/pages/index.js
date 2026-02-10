@@ -26,11 +26,6 @@ function HomepageHeader() {
           <div className={styles.heroButtons}>
             <Link
               className={styles.heroButton}
-              to="/docs/projects/current-requirement">
-              <span>Explore Projects →</span>
-            </Link>
-            <Link
-              className={styles.heroButton}
               to="/docs/outstanding-projects/25S/group1">
               <span>Outstanding Projects →</span>
             </Link>
@@ -38,6 +33,11 @@ function HomepageHeader() {
               className={styles.heroButton}
               to="/docs/merged-prs/25S">
               <span>Merged PRs →</span>
+            </Link>
+            <Link
+              className={styles.heroButton}
+              to="/docs/dashboard/25S">
+              <span>Dashboard →</span>
             </Link>
           </div>
         </div>
