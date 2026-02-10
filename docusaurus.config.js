@@ -116,13 +116,19 @@ const config = {
             position: 'left',
             label: 'Merged PRs',
           },
+          {
+            type: 'docSidebar',
+            sidebarId: 'dashboardSidebar',
+            position: 'left',
+            label: 'Dashboard',
+          },
           // {to: '/blog', label: 'Blog', position: 'left'},
           // {to: '/frame', label: 'Frame', position: 'left'},
-          {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
-            position: 'right',
-          },
+          // {
+          //   href: 'https://github.com/facebook/docusaurus',
+          //   label: 'GitHub',
+          //   position: 'right',
+          // },
         ],
       },
       colorMode: {

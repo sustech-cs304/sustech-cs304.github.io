@@ -24,18 +24,18 @@ import CommitMessageLengthChart from './CommitMessageLengthChart';
 
 const SEMESTERS = ['23 Spring', '24 Spring', '25 Spring'];
 
-export default function Dashboard() {
-  const [selectedSemester, setSelectedSemester] = useState('23 Spring');
+export default function Dashboard({ selectedSemester }) {
+  // const [selectedSemester, setSelectedSemester] = useState(initialSemester);
 
   return (
     <div className="dashboard">
       <div className="dashboard-header">
         <h2>Dashboard Visualization Panel</h2>
-        <SemesterSelector 
+        {/* <SemesterSelector 
           value={selectedSemester}
           onChange={(e) => setSelectedSemester(e.target.value)}
           options={SEMESTERS}
-        />
+        /> */}
       </div>
 
       {/* Single column card layout */}
@@ -215,19 +215,19 @@ export default function Dashboard() {
   );
 }
 
-function SemesterSelector({ value, onChange, options }) {
-  return (
-    <div className="semester-selector">
-      <select value={value} onChange={onChange} className="semester-select">
-        {options.map((option) => (
-          <option key={option} value={option}>
-            {option}
-          </option>
-        ))}
-      </select>
-    </div>
-  );
-}
+// function SemesterSelector({ value, onChange, options }) {
+//   return (
+//     <div className="semester-selector">
+//       <select value={value} onChange={onChange} className="semester-select">
+//         {options.map((option) => (
+//           <option key={option} value={option}>
+//             {option}
+//           </option>
+//         ))}
+//       </select>
+//     </div>
+//   );
+// }
 
 // ChartCard component: Internal left-right column layout, supports reversal (alternating left-right)
 function ChartCard({ title, description, children, reverse }) {

@@ -53,6 +53,17 @@ const sidebars = {
   mergedPRsSidebar: [
     'merged-prs/25S',
   ],
+
+  dashboardSidebar: [
+    {
+      type: 'category',
+      label: 'Dashboards',
+      items: [
+        'dashboard/25S',
+        // add more years here as you create them
+      ],
+    },
+  ],
 };
 
 export default sidebars;

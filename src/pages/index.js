@@ -75,7 +75,7 @@ export default function Home() {
               Explore detailed analytics of past semester projects, including commit patterns, 
               contribution distributions, and team collaboration metrics.
             </p>
-            <Dashboard />
+            {/* <Dashboard /> */}
           </div>
         </div>
       </main>
