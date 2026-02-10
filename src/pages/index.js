@@ -69,14 +69,7 @@ export default function Home() {
               <p>See the course in motion! Follow the collective activity of all teams through live analytics, tracking every commit and contribution as we build the semester together.</p>
             </div>
           </div>
-          <div className={styles.dashboardSection}>
-            <h2 className={styles.sectionTitle}>The Pulse of CS304</h2>
-            <p className={styles.sectionDescription}>
-              Explore detailed analytics of past semester projects, including commit patterns, 
-              contribution distributions, and team collaboration metrics.
-            </p>
-            {/* <Dashboard /> */}
-          </div>
+
         </div>
       </main>
     </Layout>
