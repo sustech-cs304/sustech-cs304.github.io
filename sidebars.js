@@ -43,20 +43,9 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: '24 Fall',
+      label: '23 Spring',
       items: [
-        'outstanding-projects/24F/group1', 
-        'outstanding-projects/24F/group2', 
-        'outstanding-projects/24F/group3', 
-      ],
-    },
-    {
-      type: 'category',
-      label: '24 Spring',
-      items: [
-        'outstanding-projects/24S/group1', 
-        'outstanding-projects/24S/group2', 
-        'outstanding-projects/24S/group3', 
+        'outstanding-projects/23S/group1', 
       ],
     },
   ],
