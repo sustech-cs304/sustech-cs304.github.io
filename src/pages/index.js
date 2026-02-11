@@ -70,44 +70,44 @@ export default function Home() {
             </div>
           </div>
 
-        </div>
-
-        <div className="container margin-top--lg">
-          <div className="row">
-            <div className="col col--6">
-              <div className="avatar avatar--vertical">
-                <img
-                  className="avatar__photo avatar__photo--xl"
-                  src="/img/sustech-logo.png"
-                  alt="Your Name"
-                />
-                <div className="avatar__intro">
-                  <h3 className="avatar__name">Your Name</h3>
-                  <small className="avatar__subtitle">Instructor, CS304</small>
-                  <p className="avatar__subtitle">
-                    Short bio goes here. Focus on software engineering and project‑based learning.
-                  </p>
+          <div className="container margin-top--lg">
+            <div className="row">
+              <div className="col col--6">
+                <div className="avatar avatar--vertical">
+                  <img
+                    className="avatar__photo avatar__photo--xl"
+                    src="/img/sustech-logo.png"
+                    alt="Instructor"
+                  />
+                  <div className="avatar__intro">
+                    <h3 className="avatar__name">Your Name</h3>
+                    <small className="avatar__subtitle">Instructor, CS304</small>
+                    <p className="avatar__subtitle">
+                      Short bio goes here. Focus on software engineering and project‑based learning.
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div className="col col--6">
-              <div className="avatar avatar--vertical">
-                <img
-                  className="avatar__photo avatar__photo--xl"
-                  src="/img/author-co.jpg"
-                  alt="Co‑Instructor"
-                />
-                <div className="avatar__intro">
-                  <h3 className="avatar__name">Co‑Instructor</h3>
-                  <small className="avatar__subtitle">Teaching Assistant</small>
-                  <p className="avatar__subtitle">
-                    Another short bio. Adjust as needed.
-                  </p>
+              <div className="col col--6">
+                <div className="avatar avatar--vertical">
+                  <img
+                    className="avatar__photo avatar__photo--xl"
+                    src="/img/sustech-logo.png"
+                    alt="Co-Instructor"
+                  />
+                  <div className="avatar__intro">
+                    <h3 className="avatar__name">Co‑Instructor</h3>
+                    <small className="avatar__subtitle">Teaching Assistant</small>
+                    <p className="avatar__subtitle">
+                      Another short bio. Adjust as needed.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+
         </div>
       </main>
     </Layout>
