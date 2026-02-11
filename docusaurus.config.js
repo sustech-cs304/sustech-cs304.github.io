@@ -140,6 +140,11 @@ const config = {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
       },
+      footer: {
+        style: 'dark', 
+        // Optional extra line centered below the columns:
+        copyright: `© ${new Date().getFullYear()} SUSTech CS304. Built with Docusaurus.`,
+      },
     }),
 };
 

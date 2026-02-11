@@ -89,7 +89,7 @@ export default function Home() {
                 <p>
                   <a href="mailto:taoyd@sustech.edu.cn">✉ Email</a>{' '}
                   ·{' '}
-                  <a href="https://your-website.example.com" target="_blank" rel="noreferrer">
+                  <a href="https://yidatao.github.io/" target="_blank" rel="noreferrer">
                     🌐 Website
                   </a>
                 </p>
@@ -116,45 +116,6 @@ export default function Home() {
               </div>
             </div>
           </section>
-
-          {/* <div className="container margin-top--lg">
-            <div className="row">
-              <div className="col col--6">
-                <div className="avatar avatar--vertical">
-                  <img
-                    className="avatar__photo avatar__photo--xl"
-                    src="/img/tyd.jpg"
-                    alt="Instructor"
-                    width="300"
-                    height="300"
-                  />
-                  <div className="avatar__intro">
-                    <div className="avatar__name">Yida Tao</div>
-                    <p className="avatar__subtitle">
-                      Course Instructor
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col col--6">
-                <div className="avatar avatar--vertical">
-                  <img
-                    className="avatar__photo avatar__photo--xl"
-                    src="/img/sustech-logo.png"
-                    alt="Co-Instructor"
-                  />
-                  <div className="avatar__intro">
-                    <h3 className="avatar__name">Co‑Instructor</h3>
-                    <small className="avatar__subtitle">Teaching Assistant</small>
-                    <p className="avatar__subtitle">
-                      Another short bio. Adjust as needed.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> */}
 
         </div>
       </main>
