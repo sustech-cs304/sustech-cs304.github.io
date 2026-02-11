@@ -76,14 +76,15 @@ export default function Home() {
                 <div className="avatar avatar--vertical">
                   <img
                     className="avatar__photo avatar__photo--xl"
-                    src="/img/sustech-logo.png"
+                    src="/img/tyd.jpg"
                     alt="Instructor"
+                    width="200"
+                    height="200"
                   />
                   <div className="avatar__intro">
-                    <h3 className="avatar__name">Your Name</h3>
-                    <small className="avatar__subtitle">Instructor, CS304</small>
+                    <div className="avatar__name">Yida Tao</div>
                     <p className="avatar__subtitle">
-                      Short bio goes here. Focus on software engineering and project‑based learning.
+                      Course Instructor
                     </p>
                   </div>
                 </div>
