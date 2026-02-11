@@ -34,20 +34,22 @@ const sidebars = {
   outstandingProjectsSidebar: [
     {
       type: 'category',
-      label: '25 Spring',
+      label: '2025',
       items: [
         'outstanding-projects/25S/group1', 
         'outstanding-projects/25S/group2', 
         'outstanding-projects/25S/group3', 
+        'outstanding-projects/25S/group4', 
+        'outstanding-projects/25S/group5', 
       ],
     },
-    {
-      type: 'category',
-      label: '23 Spring',
-      items: [
-        'outstanding-projects/23S/group1', 
-      ],
-    },
+    // {
+    //   type: 'category',
+    //   label: '23 Spring',
+    //   items: [
+    //     'outstanding-projects/23S/group1', 
+    //   ],
+    // },
   ],
 
   mergedPRsSidebar: [
