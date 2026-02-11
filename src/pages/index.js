@@ -73,21 +73,21 @@ export default function Home() {
 
                     {/* Instructors cards at the bottom */}
                     <section className="margin-top--lg">
-            <h2 className={styles.sectionTitle}>Course Instructors</h2>
+            <h2 className={styles.sectionTitle}>Teaching Staff</h2>
             <div className={styles.features}>
               <div className={styles.feature}>
                 <img
                   className="avatar__photo avatar__photo--xl"
-                  src="/img/tyd.jpg"
+                  src="/img/tyd.PNG"
                   alt="Yida Tao"
                   width="160"
                   height="160"
-                  style={{ borderRadius: '50%', marginBottom: '1rem' }}
+                  style={{ display: 'block', borderRadius: '50%', margin: '0 auto 1rem' }}
                 />
                 <h3>Yida Tao</h3>
                 <p>Course Instructor</p>
                 <p>
-                  <a href="mailto:your.email@sustech.edu.cn">✉ Email</a>{' '}
+                  <a href="mailto:taoyd@sustech.edu.cn">✉ Email</a>{' '}
                   ·{' '}
                   <a href="https://your-website.example.com" target="_blank" rel="noreferrer">
                     🌐 Website
@@ -102,10 +102,10 @@ export default function Home() {
                   alt="Co‑Instructor"
                   width="160"
                   height="160"
-                  style={{ borderRadius: '50%', marginBottom: '1rem' }}
+                  style={{ display: 'block', borderRadius: '50%', margin: '0 auto 1rem' }}
                 />
-                <h3>Co‑Instructor</h3>
-                <p>Teaching Assistant</p>
+                <h3>Yao Zhao</h3>
+                <p>Lab tutor</p>
                 <p>
                   <a href="mailto:co.instructor@sustech.edu.cn">✉ Email</a>{' '}
                   ·{' '}

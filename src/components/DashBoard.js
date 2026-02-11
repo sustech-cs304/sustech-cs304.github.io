@@ -30,7 +30,6 @@ export default function Dashboard({ selectedSemester }) {
   return (
     <div className="dashboard">
       <div className="dashboard-header">
-        <h2>Dashboard Visualization Panel</h2>
         {/* <SemesterSelector 
           value={selectedSemester}
           onChange={(e) => setSelectedSemester(e.target.value)}
