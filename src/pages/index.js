@@ -70,7 +70,54 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="container margin-top--lg">
+
+                    {/* Instructors cards at the bottom */}
+                    <section className="margin-top--lg">
+            <h2 className={styles.sectionTitle}>Course Instructors</h2>
+            <div className={styles.features}>
+              <div className={styles.feature}>
+                <img
+                  className="avatar__photo avatar__photo--xl"
+                  src="/img/tyd.jpg"
+                  alt="Yida Tao"
+                  width="160"
+                  height="160"
+                  style={{ borderRadius: '50%', marginBottom: '1rem' }}
+                />
+                <h3>Yida Tao</h3>
+                <p>Course Instructor</p>
+                <p>
+                  <a href="mailto:your.email@sustech.edu.cn">✉ Email</a>{' '}
+                  ·{' '}
+                  <a href="https://your-website.example.com" target="_blank" rel="noreferrer">
+                    🌐 Website
+                  </a>
+                </p>
+              </div>
+
+              <div className={styles.feature}>
+                <img
+                  className="avatar__photo avatar__photo--xl"
+                  src="/img/sustech-logo.png"
+                  alt="Co‑Instructor"
+                  width="160"
+                  height="160"
+                  style={{ borderRadius: '50%', marginBottom: '1rem' }}
+                />
+                <h3>Co‑Instructor</h3>
+                <p>Teaching Assistant</p>
+                <p>
+                  <a href="mailto:co.instructor@sustech.edu.cn">✉ Email</a>{' '}
+                  ·{' '}
+                  <a href="https://co-instructor.example.com" target="_blank" rel="noreferrer">
+                    🌐 Website
+                  </a>
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* <div className="container margin-top--lg">
             <div className="row">
               <div className="col col--6">
                 <div className="avatar avatar--vertical">
@@ -78,8 +125,8 @@ export default function Home() {
                     className="avatar__photo avatar__photo--xl"
                     src="/img/tyd.jpg"
                     alt="Instructor"
-                    width="200"
-                    height="200"
+                    width="300"
+                    height="300"
                   />
                   <div className="avatar__intro">
                     <div className="avatar__name">Yida Tao</div>
@@ -107,7 +154,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
         </div>
       </main>
