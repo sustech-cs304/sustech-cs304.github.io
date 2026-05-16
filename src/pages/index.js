@@ -36,7 +36,7 @@ function HomepageHeader() {
             </Link>
             <Link
               className={styles.heroButton}
-              to="/docs/dashboard/25S">
+              to="/docs/dashboard/26S">
               <span>Dashboard →</span>
             </Link>
           </div>

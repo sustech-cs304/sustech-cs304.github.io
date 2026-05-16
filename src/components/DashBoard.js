@@ -22,7 +22,7 @@ import GiniChangeLinesDistributionChart from './GiniChangeLinesDistributionChart
 import CommitMessageLanguageDistribution from './CommitMessageLanguageDistribution';
 import CommitMessageLengthChart from './CommitMessageLengthChart';
 
-const SEMESTERS = ['23 Spring', '24 Spring', '25 Spring'];
+const SEMESTERS = ['23 Spring', '24 Spring', '25 Spring', '26 Spring'];
 
 export default function Dashboard({ selectedSemester }) {
   // const [selectedSemester, setSelectedSemester] = useState(initialSemester);

@@ -61,6 +61,7 @@ const sidebars = {
       type: 'category',
       label: 'Dashboards',
       items: [
+        'dashboard/26S',
         'dashboard/25S',
         // add more years here as you create them
       ],

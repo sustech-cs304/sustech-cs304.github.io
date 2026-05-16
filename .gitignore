@@ -22,6 +22,7 @@ yarn-error.log*
 /classroom-repos/output/*
 /classroom-repos/repos/*
 /classroom-repos/tmp/*
+/classroom-repos/.env
 .env
 
 /intro.md

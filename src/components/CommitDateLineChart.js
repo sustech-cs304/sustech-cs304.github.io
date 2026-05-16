@@ -23,6 +23,7 @@ export default function CommitDateLineChart({ selectedSemester }) {
           '23 Spring': ['2023-02-01', '2023-06-10'],
           '24 Spring': ['2024-02-01', '2024-06-10'],
           '25 Spring': ['2025-02-01', '2025-06-10'],
+          '26 Spring': ['2026-02-01', '2026-06-10'],
         };
         const [startStr, endStr] = dateRanges[selectedSemester];
         const start = new Date(startStr);
