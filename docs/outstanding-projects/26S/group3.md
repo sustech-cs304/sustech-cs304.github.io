@@ -11,4 +11,4 @@ HarmonyOS App Innovation
 郭振弘、冉明东、周子涵、吴嘉淇、温一楠
 
 ## GitHub Repo
-https://github.com/sustech-cs304/team-project-26spring-7
+[https://github.com/sustech-cs304/team-project-26spring-7](https://github.com/sustech-cs304/team-project-26spring-26s-7)
