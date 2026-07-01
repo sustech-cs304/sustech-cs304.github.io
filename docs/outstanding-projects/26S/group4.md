@@ -11,4 +11,4 @@ SUSTECH Student Productivity Agent
 邱亮玮、谢沁鑫、彭致远、蔡易霖、徐海心
 
 ## GitHub Repo
-https://github.com/sustech-cs304/team-project-26spring-1
+[https://github.com/sustech-cs304/team-project-26spring-1](https://github.com/sustech-cs304/team-project-26spring-26s-1)
