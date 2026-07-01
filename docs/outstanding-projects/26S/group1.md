@@ -11,4 +11,4 @@ SUSTECH Student Productivity Agent
 刘睿涵、陈子严、安兆兴、李晏敏、李尚致
 
 ## GitHub Repo
-https://github.com/sustech-cs304/team-project-26spring-27
+[https://github.com/sustech-cs304/team-project-26spring-27](https://github.com/sustech-cs304/team-project-26spring-26s-27)
