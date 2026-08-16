@@ -43,17 +43,23 @@ const sidebars = {
         'outstanding-projects/25S/group5', 
       ],
     },
-    // {
-    //   type: 'category',
-    //   label: '23 Spring',
-    //   items: [
-    //     'outstanding-projects/23S/group1', 
-    //   ],
-    // },
+    {
+       type: 'category',
+       label: '2026',
+       items: [
+         'outstanding-projects/26S/group1', 
+         'outstanding-projects/26S/group2', 
+         'outstanding-projects/26S/group3', 
+         'outstanding-projects/26S/group4', 
+       ],
+    },
+    // add more years here as you create them
   ],
 
   mergedPRsSidebar: [
     'merged-prs/25S',
+    'merged-prs/26S',
+    // add more years here as you create them
   ],
 
   dashboardSidebar: [
