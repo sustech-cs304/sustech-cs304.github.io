@@ -22,6 +22,7 @@ DEFAULT_START = "2026-02-01"
 DEFAULT_END = "2026-06-30"
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 DEFAULT_OUTPUT = os.path.abspath(os.path.join(SCRIPT_DIR, "..", "static", "chart_data.json"))
+DEFAULT_CACHE = os.path.abspath(os.path.join(SCRIPT_DIR, f"dashboard_cache_{DEFAULT_SEMESTER}.json"))
 
 
 def parse_date(value, end_of_day=False):
@@ -71,11 +72,13 @@ def parse_next_link(link_header):
 
 
 class GitHubDashboardCollector:
-    def __init__(self, token, organization, semester, start, end):
+    def __init__(self, token, organization, semester, start, end, cache_path=None):
         self.organization = organization
         self.semester = semester.lower()
         self.start = start
         self.end = end
+        self.cache_path = cache_path
+        self.cache = load_existing_json(cache_path) if cache_path else {}
         self.headers = {
             "Authorization": f"Bearer {token}",
             "Accept": "application/vnd.github+json",
@@ -208,19 +211,36 @@ class GitHubDashboardCollector:
         for index, repo in enumerate(repos, start=1):
             repo_name = repo["repo_name"]
             group_name = repo["group_name"]
-            self.log(f"[{index}/{len(repos)}] Collecting {repo_name}")
-
-            branches = self.get_branches(repo_name)
-            commits = self.get_unique_commits_from_all_branches(repo_name, branches)
-            issues = self.count_issues(repo_name)
-            prs = self.count_pull_requests(repo_name)
+            cache_key = self.cache_key(repo_name)
+            cached = self.cache.get(cache_key)
+            if cached:
+                self.log(f"[{index}/{len(repos)}] Using cached {repo_name}")
+                branches = cached["branches"]
+                commit_times = [parse_github_time(value) for value in cached["commit_times"]]
+                issues = cached["issues"]
+                prs = cached["prs"]
+            else:
+                self.log(f"[{index}/{len(repos)}] Collecting {repo_name}")
+                branches = self.get_branches(repo_name)
+                commit_times = self.get_unique_commits_from_all_branches(repo_name, branches)
+                issues = self.count_issues(repo_name)
+                prs = self.count_pull_requests(repo_name)
+                self.cache[cache_key] = {
+                    "repo_name": repo_name,
+                    "group_name": group_name,
+                    "branches": branches,
+                    "commit_times": [dt.astimezone(timezone.utc).isoformat().replace("+00:00", "Z") for dt in commit_times],
+                    "issues": issues,
+                    "prs": prs,
+                }
+                self.save_cache()
 
             group_names.append(group_name)
             branch_counts.append(len(branches))
-            commit_counts.append(len(commits))
+            commit_counts.append(len(commit_times))
             issue_counts.append(issues)
             pr_counts.append(prs)
-            all_commit_times.extend(commits)
+            all_commit_times.extend(commit_times)
 
         return self.build_chart_data(
             group_names=group_names,
@@ -230,6 +250,13 @@ class GitHubDashboardCollector:
             pr_counts=pr_counts,
             commit_times=all_commit_times,
         )
+
+    def cache_key(self, repo_name):
+        return "|".join([self.semester, self.start.date().isoformat(), self.end.date().isoformat(), repo_name])
+
+    def save_cache(self):
+        if self.cache_path:
+            save_json(self.cache_path, self.cache)
 
     def build_chart_data(
         self,
@@ -332,6 +359,11 @@ def parse_args():
         default=DEFAULT_OUTPUT,
         help="Output chart_data.json path. Existing semesters are preserved.",
     )
+    parser.add_argument(
+        "--cache",
+        default=DEFAULT_CACHE,
+        help="Per-repository checkpoint cache path for resumable collection.",
+    )
     return parser.parse_args()
 
 
@@ -356,6 +388,7 @@ def main():
         semester=args.semester,
         start=start,
         end=end,
+        cache_path=args.cache,
     )
     semester_data = collector.collect(args.assignment_id)
 
