@@ -59,6 +59,7 @@ export default function Dashboard({ selectedSemester }) {
         title="Commit Count per Team"
         description="Look at all those commits! Is your team leading the pack, or are you the dark horse waiting to make a late-night surge?"
         reverse={false}
+        wide
       >
         <CommitCountPerRepoChart selectedSemester={selectedSemester} />
       </ChartCard>
@@ -125,6 +126,7 @@ export default function Dashboard({ selectedSemester }) {
         title="Issue Count per Team"
         description={`From "it's not a bug, it's a feature" to "mission accomplished!" This is the record of our collective battle against the backlog. How many "Done" columns did your team fill today?`}
         reverse={true}
+        wide
       >
         <IssueCountPerRepoChart selectedSemester={selectedSemester} />
       </ChartCard>
@@ -134,6 +136,7 @@ export default function Dashboard({ selectedSemester }) {
         title="Branch Count per Team"
         description={`Branches are where the real experimentation happens! Dive in, branch out, and don't be afraid to break things in your own space!`}
         reverse={false}
+        wide
       >
         <BranchCountPerRepoChart selectedSemester={selectedSemester} />
       </ChartCard>
@@ -142,6 +145,7 @@ export default function Dashboard({ selectedSemester }) {
         title="PR Count per Team"
         description={`Every Pull Request is a "handshake" between teammates: a moment to step back, learn from each other, and collaborate before the final merge. How many handshakes has your team exchanged lately?`}
         reverse={false}
+        wide
       >
         <PRCountPerRepoChart selectedSemester={selectedSemester} />
       </ChartCard>
@@ -229,10 +233,10 @@ export default function Dashboard({ selectedSemester }) {
 // }
 
 // ChartCard component: Internal left-right column layout, supports reversal (alternating left-right)
-function ChartCard({ title, description, children, reverse }) {
+function ChartCard({ title, description, children, reverse, wide }) {
   return (
     <div className="chart-card">
-      <div className={`chart-card-content ${reverse ? 'reverse' : ''}`}>
+      <div className={`chart-card-content ${reverse ? 'reverse' : ''} ${wide ? 'wide' : ''}`}>
         <div className="chart-image">
           {children}
         </div>
